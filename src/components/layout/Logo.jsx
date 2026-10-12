@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 export function BoltMark({ size = 40 }) {
   return (
     <svg width={size} height={size} viewBox="0 0 64 64" aria-hidden="true">
-      <rect width="64" height="64" rx="16" fill="#08783D" />
+      <rect width="64" height="64" rx="16" fill="#5E6B55" />
       <path d="M36 8 15 36h14l-4 20 24-31H35z" fill="#FFFFFF" />
     </svg>
   );

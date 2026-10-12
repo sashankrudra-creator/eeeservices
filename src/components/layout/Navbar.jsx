@@ -85,7 +85,7 @@ export default function Navbar() {
           )}
         </nav>
         <div className="nav__cta">
-          <Button size="sm" onClick={() => openQuote()}>Get a Quote</Button>
+          <Button size="sm" onClick={() => openQuote()}>CONTACT US</Button>
         </div>
         <button className="nav__burger" onClick={() => setOpen(true)} aria-label="Open menu" aria-expanded={open}><Menu size={26} /></button>
       </div>

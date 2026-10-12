@@ -1,37 +1,60 @@
 import Hero from '../components/sections/Hero';
-import StatsBar from '../components/sections/StatsBar';
-import ServicesGrid from '../components/sections/ServicesGrid';
-import BusinessSplit from '../components/sections/BusinessSplit';
-import FounderSpotlight from '../components/sections/FounderSpotlight';
-import FeaturedProjects from '../components/sections/FeaturedProjects';
+import WhoWeAre from '../components/sections/WhoWeAre';
+import ServicesShowcase from '../components/sections/ServicesShowcase';
+import WhyChooseUs from '../components/sections/WhyChooseUs';
+import ProjectsCarousel from '../components/sections/ProjectsCarousel';
 import ClientsMarquee from '../components/sections/ClientsMarquee';
-import CTABanner from '../components/sections/CTABanner';
-import MaintenanceStepper from '../components/sections/MaintenanceStepper';
-import PerformanceBand from '../components/sections/PerformanceBand';
+import EditorialCTA from '../components/sections/EditorialCTA';
 import Marquee from '../components/ui/Marquee';
 import useDocumentTitle from '../hooks/useDocumentTitle';
 
-const chips = ['Special Class IBR', "'A' Grade Electrical", 'BOE Certified', 'In-house NDT', '6G Welders', 'CEA & CIEG Liaison', 'Up to 400 kV'];
+const chips = [
+  'Special Class IBR',
+  "'A' Grade Electrical",
+  'BOE Certified Engineers',
+  '400 kV Infrastructure',
+  'In-house NDT Testing',
+  '6G Alloy Welders',
+  '135 MW Unit Stewardship',
+  'CEA & CIEG Liaison',
+];
 
 export default function Home() {
-  useDocumentTitle('');
+  useDocumentTitle('Triple E Services — Electrical Engineering, EPC & Power Infrastructure');
+
   return (
-    <>
+    <div className="page-home-redesign">
+      {/* 1. Hero with Floating Cards (Reference 1 & 2) */}
       <Hero />
-      <StatsBar />
-      <div className="strip">
-        <Marquee speed={35}>
-          {chips.map((c) => (<span key={c} className="strip__chip">{c}</span>))}
+
+      {/* Trust Credential Strip */}
+      <div className="strip" aria-label="Company accreditations">
+        <Marquee speed={32}>
+          {chips.map((c) => (
+            <span key={c} className="strip__chip">
+              {c}
+            </span>
+          ))}
         </Marquee>
       </div>
-      <ServicesGrid />
-      <BusinessSplit />
-      <FounderSpotlight />
-      <MaintenanceStepper />
-      <PerformanceBand showStrength={false} />
-      <FeaturedProjects />
+
+      {/* 2. Who We Are (Reference 4) */}
+      <WhoWeAre />
+
+      {/* 3. Services Showcase (Image-led editorial cards) */}
+      <ServicesShowcase />
+
+      {/* 4. Why Choose Us (Dark contrast section + 6-phase protocol) */}
+      <WhyChooseUs />
+
+      {/* 5. Projects & Case Studies (Reference 5 horizontal carousel) */}
+      <ProjectsCarousel />
+
+      {/* 6. Clients & Industrial Partners */}
       <ClientsMarquee />
-      <CTABanner />
-    </>
+
+      {/* 7. Editorial CTA Banner (Reference 3) */}
+      <EditorialCTA />
+    </div>
   );
 }

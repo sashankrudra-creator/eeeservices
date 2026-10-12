@@ -1,81 +1,137 @@
-import { useEffect, useState } from 'react';
-import { AnimatePresence, motion, useReducedMotion } from 'framer-motion';
-import { ArrowRight, ChevronLeft, ChevronRight, Zap } from 'lucide-react';
-import Button from '../ui/Button';
-import { heroWords } from '../../data/company';
+import { motion } from 'framer-motion';
+import { ArrowRight } from 'lucide-react';
 import { useApp } from '../../context/AppContext';
 
-// Existing hero photos from /public/images.
-const slides = [
-  { src: '/images/herosection1.png', pos: 'center' },
-  { src: '/images/hero.jpg', pos: 'center 30%' },
-  { src: '/images/herosection2.jpg', pos: 'center 35%' },
-];
-
 export default function Hero() {
-  const [i, setI] = useState(0);
-  const [slide, setSlide] = useState(0);
-  const [paused, setPaused] = useState(false);
-  const reduce = useReducedMotion();
   const { openQuote } = useApp();
 
-  useEffect(() => {
-    if (reduce) return undefined;
-    const id = setInterval(() => setI((x) => (x + 1) % heroWords.length), 2500);
-    return () => clearInterval(id);
-  }, [reduce]);
-
-  useEffect(() => {
-    if (reduce || paused) return undefined;
-    const id = setTimeout(() => setSlide((x) => (x + 1) % slides.length), 6500);
-    return () => clearTimeout(id);
-  }, [slide, reduce, paused]);
-
-  const go = (n) => setSlide((n + slides.length) % slides.length);
-
   return (
-    <section className="hero" aria-roledescription="carousel" aria-label="Triple E Services" onMouseEnter={() => setPaused(true)} onMouseLeave={() => setPaused(false)}>
-      <div className="hero__slides" aria-hidden="true">
-        {slides.map((s, k) => (
-          <div key={s.src} className={`hero__slide ${k === slide ? 'is-active' : ''}`} style={{ backgroundImage: `url('${s.src}')`, backgroundPosition: s.pos }} />
-        ))}
+    <section className="hero-reference" aria-label="Hero Section">
+      {/* Background Image: Generated Windmills on Green Rolling Hills */}
+      <div className="hero-reference__bg" aria-hidden="true">
+        <img
+          src="/images/generated/hero_windmills_exact.jpg"
+          alt="Wind turbines on lush green rolling hills"
+          className="hero-reference__img"
+        />
+        {/* Soft, natural gradient overlay: NO harsh dark tones, pure bright daylight atmosphere */}
+        <div className="hero-reference__overlay" />
       </div>
-      <div className="hero__shade" aria-hidden="true" />
-      <div className="container hero__in">
-        <motion.div className="hero__copy" initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7 }}>
-          <span className="eyebrow eyebrow--glow"><Zap size={14} aria-hidden="true" /> Energy · Execution · Efficiency</span>
-          <h1>
-            Powering Plants.<br />Delivering Performance.
-          </h1>
-          <p className="hero__rot" aria-live="off">
-            <span className="hero__rot-label">Operations that are</span>
-            <span className="hero__word-wrap">
-              <AnimatePresence mode="wait">
-                <motion.span key={heroWords[i]} className="hero__word" initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -16 }} transition={{ duration: 0.3 }}>
-                  {heroWords[i]}
-                </motion.span>
-              </AnimatePresence>
-            </span>
-          </p>
-          <p className="hero__sub">
-            Comprehensive O&amp;M, electrical EPC and expert manpower for power plants and industry across India.
-          </p>
-          <div className="hero__btns">
-            <Button size="lg" iconRight={<ArrowRight size={18} />} onClick={() => document.getElementById('services-grid')?.scrollIntoView({ behavior: 'smooth' })}>Explore Services</Button>
-            <Button size="lg" variant="ghost" to="/projects">View Projects</Button>
-            <Button size="lg" variant="outline" onClick={() => openQuote()}>Get a Quote</Button>
-          </div>
-        </motion.div>
-      </div>
-      <div className="container hero__ctrl">
-        <div className="hero__dots" role="group" aria-label="Choose slide">
-          {slides.map((s, k) => (
-            <button key={s.src} className={`hero__dot ${k === slide ? 'is-active' : ''}`} onClick={() => go(k)} aria-label={`Show slide ${k + 1}`} aria-current={k === slide ? 'true' : undefined} />
-          ))}
+
+      <div className="container hero-reference__container">
+        {/* Main Center Typography & CTA */}
+        <div className="hero-reference__center">
+          <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+          >
+            <h1 className="hero-reference__title">
+              POWER TOMORROW TODAY<br />
+              WITH TRIPLE E SERVICES
+            </h1>
+            <p className="hero-reference__subtitle">
+              From cutting-edge green designs to recycling programs we&rsquo;re dedicated to<br className="hero-reference__br" />
+              transforming the world with every eco-friendly product
+            </p>
+
+            <div className="hero-reference__cta-wrap">
+              <button
+                type="button"
+                className="hero-reference__get-started-btn"
+                onClick={() => {
+                  const el = document.getElementById('who-we-are') || document.getElementById('services-section');
+                  el?.scrollIntoView({ behavior: 'smooth' });
+                }}
+              >
+                <span>Get Started</span>
+                <span className="hero-reference__btn-arrow" aria-hidden="true">
+                  <ArrowRight size={17} />
+                </span>
+              </button>
+            </div>
+          </motion.div>
         </div>
-        <div className="hero__arrows">
-          <button className="hero__arrow" onClick={() => go(slide - 1)} aria-label="Previous slide"><ChevronLeft size={20} aria-hidden="true" /></button>
-          <button className="hero__arrow" onClick={() => go(slide + 1)} aria-label="Next slide"><ChevronRight size={20} aria-hidden="true" /></button>
+
+        {/* Floating Glassmorphic Cards at Bottom */}
+        <div className="hero-reference__cards">
+          {/* Card 1: Sustainability Meets Style */}
+          <motion.div
+            className="hero-ref-card hero-ref-card--wide"
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.2, duration: 0.6 }}
+          >
+            <div className="hero-ref-card__thumb">
+              <img
+                src="/images/generated/grid_sustainability_thumb.jpg"
+                alt="Sustainability and green energy designs"
+                loading="eager"
+              />
+            </div>
+            <div className="hero-ref-card__info">
+              <h3 className="hero-ref-card__title">
+                WHERE SUSTAINABILITY<br />
+                MEETS STYLE.
+              </h3>
+              <p className="hero-ref-card__desc">
+                With green designs and recycling we&rsquo;re making the world eco-friendly.
+              </p>
+              <a
+                href="#services-section"
+                className="hero-ref-card__link"
+                onClick={(e) => {
+                  e.preventDefault();
+                  document.getElementById('services-section')?.scrollIntoView({ behavior: 'smooth' });
+                }}
+              >
+                DISCOVER OUR SERVICES
+              </a>
+            </div>
+          </motion.div>
+
+          {/* Card 2: 10M+ Customers with Avatar Stack */}
+          <motion.div
+            className="hero-ref-card hero-ref-card--stat"
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.3, duration: 0.6 }}
+          >
+            <div className="hero-ref-card__avatars" aria-hidden="true">
+              <span className="ref-avatar ref-avatar--1">
+                <img src="/images/Triple E Energy Services Logo.png?v=5" alt="" />
+              </span>
+              <span className="ref-avatar ref-avatar--2">
+                <span>E</span>
+              </span>
+              <span className="ref-avatar ref-avatar--3">
+                <span>⚡</span>
+              </span>
+            </div>
+            <div className="hero-ref-card__number">10M+</div>
+            <div className="hero-ref-card__label">CUSTOMERS</div>
+          </motion.div>
+
+          {/* Card 3: Efficient Solar Panels with Tree Icon */}
+          <motion.div
+            className="hero-ref-card hero-ref-card--feature"
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.4, duration: 0.6 }}
+          >
+            <div className="hero-ref-card__tree-icon" aria-hidden="true">
+              <img
+                src="/images/generated/tree_icon.jpg"
+                alt="Green tree icon"
+              />
+            </div>
+            <h3 className="hero-ref-card__title">
+              EFFICIENT SOLAR PANELS
+            </h3>
+            <p className="hero-ref-card__desc">
+              Our solar panels deliver maximum efficiency ensuring you get the most out of every ray.
+            </p>
+          </motion.div>
         </div>
       </div>
     </section>

@@ -1,41 +1,58 @@
 /* =========================================================
    Triple E Services — design tokens
-   Palette: red (action), green (brand), charcoal (text), white.
+   Theme: Sage Green (#A8B5A2), Deep Olive (#5E6B55), Soft Cream (#F2EFEA)
    ========================================================= */
 :root {
-  /* Brand */
-  --red: #D71920;
-  --red-d: #B5131A;          /* hover / pressed */
-  --red-soft: #FDECEC;       /* tint for badges */
+  /* Core Theme Colors */
+  --sage: #A8B5A2;           /* primary sage green */
+  --sage-d: #8A9A83;         /* deeper sage for borders & active states */
+  --sage-l: #C4CFC0;         /* light sage */
+  --sage-soft: #EBF0E9;      /* soft sage tint for badges and chips */
+  --sage-line: #BAC8B6;      /* sage border line */
 
-  --green: #08783D;          /* primary brand green */
-  --green-d: #065F30;        /* hover, dark UI */
-  --green-dd: #04381C;       /* dark sections */
-  --green-soft: #E7F2EB;     /* tint for chips / icon wells */
-  --green-line: #CFE3D6;
+  --olive: #5E6B55;          /* primary deep olive */
+  --olive-d: #007a1e;        /* dark green hover */
+  --olive-dd: #009926;       /* vibrant green replacing dark olive */
+  --olive-deep: #008020;     /* deep vibrant green replacing dark charcoal */
+  --olive-soft: #E6F7EB;     /* soft bright green tint */
+
+  --cream: #FFFFFF;          /* replaced with pure white */
+  --cream-l: #FFFFFF;        /* surface cards pure white */
+  --cream-d: #F5F5F5;        /* soft clean light border/divider */
+
+  /* Legacy & system variables mapped to new theme */
+  --red: #009926;            /* actions now use vibrant green */
+  --red-d: #007a1e;          /* hover / pressed */
+  --red-soft: #E6F7EB;       /* soft tint */
+
+  --green: #009926;          /* primary green */
+  --green-d: #007a1e;        /* hover */
+  --green-dd: #009926;       /* vibrant green replacing dark sections */
+  --green-soft: #E6F7EB;     /* tint for chips / icon wells */
+  --green-line: #52c474;     /* accent line */
 
   /* Neutrals */
   --white: #FFFFFF;
-  --ink: #222222;            /* headings + body on light */
-  --ink-2: #4B514E;          /* secondary text */
-  --mist: #F7F9F7;           /* light section background */
-  --line: #E1E8E3;
-  --steel: #7B847F;
-  --danger: #C4251C;
+  --ink: #1C221A;            /* sharp dark charcoal headings */
+  --ink-2: #4D5749;          /* warm secondary text */
+  --mist: #FFFFFF;           /* clean white background */
+  --line: #E8E8E8;           /* crisp clean border line */
+  --steel: #758170;
+  --danger: #BA3C34;
 
-  /* Legacy names kept so older rules keep resolving */
-  --electric: var(--red);
-  --electric-d: var(--red-d);
-  --electric-soft: var(--green-soft);
+  /* Legacy aliases */
+  --electric: var(--olive);
+  --electric-d: var(--olive-d);
+  --electric-soft: var(--sage-soft);
 
   --font-head: 'Sora', system-ui, sans-serif;
   --font-body: 'Inter', system-ui, sans-serif;
 
   --radius: 16px;
   --radius-sm: 10px;
-  --shadow-sm: 0 2px 10px rgba(16, 36, 24, 0.06);
-  --shadow: 0 14px 34px rgba(16, 36, 24, 0.12);
-  --shadow-lg: 0 26px 60px rgba(8, 30, 18, 0.24);
+  --shadow-sm: 0 2px 12px rgba(40, 51, 35, 0.05);
+  --shadow: 0 14px 34px rgba(40, 51, 35, 0.09);
+  --shadow-lg: 0 26px 60px rgba(26, 34, 23, 0.22);
   --ease: cubic-bezier(0.22, 1, 0.36, 1);
 
   --header-h: 84px;
