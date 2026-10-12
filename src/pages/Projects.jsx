@@ -12,22 +12,22 @@ export default function Projects() {
     {
       type: 'wide',
       thumb: '/images/board-solar.jpg',
-      title: 'MEGA-WATT EPC SCALE',
-      desc: 'Executed complex 135 MW units, 400 kV substations, and utility revamps across India.',
+      title: 'POWER, LINES & SUBSTATIONS',
+      desc: '1x135 MW power plant O&M, 400 kV transmission line O&M and 220 kV substation works.',
       linkText: 'EXPLORE CASE STUDIES',
       linkHref: '#projects-explorer',
     },
     {
       type: 'stat',
-      value: '100+',
-      label: 'PROJECTS COMPLETED',
+      value: '24+',
+      label: 'ACTIVE / RECENT O&M CONTRACTS',
       badgeIcon: true,
     },
     {
       type: 'feature',
       iconImg: '/images/generated/tree_icon.jpg',
-      title: 'ON-TIME COMMISSIONING',
-      desc: 'Fast mobilization, certified fabrication facilities, and zero-compromise handover.',
+      title: 'SINCE 2010',
+      desc: 'E&I project works at Sarda Metals & Alloys, ongoing since 2010.',
     },
   ];
 
@@ -35,9 +35,9 @@ export default function Projects() {
     <>
       <PageHero
         image="/images/generated/hero_projects.jpg"
-        eyebrow="PROVEN EPC TRACK RECORD"
-        title="RECENT CONTRACTS & MEGA PROJECT EXPERIENCE"
-        text="Cogeneration plants, solar solar PV installations, boilers, high-voltage switchyards, and industrial infrastructure executed for India's leading conglomerates."
+        eyebrow="PROJECTS"
+        title="RECENT CONTRACTS AND PROJECT EXPERIENCE"
+        text="Power (cogen and solar), boilers and utility plants, plus electrical projects across India."
         ctaText="Discuss Your Project"
         onCtaClick={() => openQuote('Project Consultation')}
         cards={projectCards}

@@ -19,22 +19,22 @@ export default function OandM() {
     {
       type: 'wide',
       thumb: '/images/control-room.jpg',
-      title: 'ROUND-THE-CLOCK SCADA',
-      desc: 'Predictive health monitoring, thermal heat rate optimization and rapid response.',
+      title: 'THE COMPLETE O&M CYCLE',
+      desc: 'Preventive, predictive, condition monitoring, breakdown and shutdown maintenance.',
       linkText: 'SEE O&M PROTOCOLS',
       linkHref: '#om-philosophy',
     },
     {
       type: 'stat',
-      value: '99.2%',
-      label: 'PLANT AVAILABILITY',
+      value: '135 MW',
+      label: 'POWER PLANT O&M',
       badgeIcon: true,
     },
     {
       type: 'feature',
       iconImg: '/images/generated/tree_icon.jpg',
-      title: 'ZERO HARM SAFETY',
-      desc: 'ISO safety standards, regular mock drills, and 100% statutory adherence guaranteed.',
+      title: 'SAFETY ON EVERY JOB',
+      desc: 'SOPs, PTW systems, LOTO procedures, risk assessments and toolbox talks.',
     },
   ];
 
@@ -44,8 +44,8 @@ export default function OandM() {
         image="/images/generated/hero_oandm.jpg"
         eyebrow="POWER PLANT OPERATIONS & MAINTENANCE"
         title="RELIABLE OPERATIONS. EFFICIENT PERFORMANCE. SAFE EXECUTION."
-        text="Comprehensive turnkey O&M solutions for thermal, captive cogen, solar, and industrial power plants delivered by certified BOE engineers, supervisors and expert technicians."
-        ctaText="Contract O&M Services"
+        text="Comprehensive O&M solutions for power generation and industrial utility plants, delivered by qualified engineers, supervisors, operators and skilled technicians."
+        ctaText="Request O&M Services"
         onCtaClick={() => openQuote('Power Plant O&M')}
         cards={omCards}
       />

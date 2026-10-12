@@ -4,18 +4,22 @@ import { company } from '../../data/company';
 import { useApp } from '../../context/AppContext';
 
 export default function EditorialCTA() {
-  const { openQuote, addToast } = useApp();
+  const { openQuote, toast } = useApp();
   const [contactValue, setContactValue] = useState('');
   const [submitted, setSubmitted] = useState(false);
 
+  // No backend: opens the visitor's email app with a drafted enquiry to the company inbox.
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (!contactValue.trim()) {
+    const v = contactValue.trim();
+    if (!v) {
       openQuote();
       return;
     }
+    const body = `Please contact me about your services.\n\nMy email / phone: ${v}`;
+    window.location.href = `mailto:${company.emails[0]}?subject=${encodeURIComponent('Website enquiry')}&body=${encodeURIComponent(body)}`;
     setSubmitted(true);
-    addToast('Thank you! Our engineering team will contact you promptly.');
+    toast('Email app opened with your enquiry.');
     setTimeout(() => {
       setSubmitted(false);
       setContactValue('');
@@ -28,13 +32,13 @@ export default function EditorialCTA() {
         <div className="cta-banner-editorial">
           <div className="cta-banner-editorial__content">
             <span className="cta-banner-editorial__eyebrow">
-              ENGINEERING PARTNERSHIP
+              CONTACT US
             </span>
             <h2 className="cta-banner-editorial__title">
-              Connect With Our Engineering Team To Get Started
+              Need a reliable O&amp;M partner?
             </h2>
             <p className="cta-banner-editorial__desc">
-              From turnkey 400 kV substations to full-scope 135 MW power plant O&amp;M, discover how Triple E Services guarantees zero downtime and certified compliance.
+              Tell us about your plant. Our engineers will respond with a practical plan.
             </p>
 
             <form className="cta-banner-editorial__form" onSubmit={handleSubmit}>
@@ -50,7 +54,7 @@ export default function EditorialCTA() {
                   type="submit"
                   className="cta-pill-submit"
                 >
-                  <span>{submitted ? 'Request Received' : 'Request Consultation'}</span>
+                  <span>{submitted ? 'Email drafted' : 'Request a Call Back'}</span>
                   <span className="cta-pill-submit__icon">
                     {submitted ? <CheckCircle size={16} /> : <ArrowUpRight size={16} />}
                   </span>

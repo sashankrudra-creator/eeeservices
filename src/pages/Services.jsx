@@ -29,22 +29,22 @@ export default function Services() {
     {
       type: 'wide',
       thumb: '/images/service-1.jpg',
-      title: 'TOTAL PLANT ECOSYSTEM',
-      desc: 'Complete turnkey execution from civil erections to SCADA and transmission.',
+      title: 'ONE ACCOUNTABLE PARTNER',
+      desc: 'From daily plant operations to turnkey electrical projects.',
       linkText: 'EXPLORE CAPABILITIES',
       linkHref: '#services-content',
     },
     {
       type: 'stat',
-      value: '8+',
+      value: '8',
       label: 'CORE SERVICES',
       badgeIcon: true,
     },
     {
       type: 'feature',
       iconImg: '/images/generated/tree_icon.jpg',
-      title: 'PRECISION EPC & O&M',
-      desc: 'Seamless preventive overhauls, statutory compliance, and operational reliability.',
+      title: 'STATUTORY LIAISONING',
+      desc: 'IBR, CIEG and PCB approvals, drawing approvals and CEA for electrical and boiler jobs.',
     },
   ];
 
@@ -52,10 +52,10 @@ export default function Services() {
     <>
       <PageHero
         image="/images/generated/hero_services.jpg"
-        eyebrow="INDUSTRIAL CAPABILITIES"
+        eyebrow="SERVICES"
         title="EVERYTHING YOUR PLANT NEEDS, FROM ONE TEAM"
-        text="Eight integrated power engineering disciplines spanning high-voltage substations, turbine overhauls, IBR boilers, statutory clearance, and automated SCADA control."
-        ctaText="Request a Proposal"
+        text="Eight integrated services covering operations, electrical, mechanical and statutory needs."
+        ctaText="Request a Quote"
         onCtaClick={() => openQuote('General Services')}
         cards={servicesCards}
       />

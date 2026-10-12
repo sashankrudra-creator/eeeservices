@@ -12,22 +12,22 @@ export default function Manpower() {
     {
       type: 'wide',
       thumb: '/images/overhaul-crew.jpg',
-      title: 'CERTIFIED TASKFORCES',
-      desc: 'BOE certified engineers, 6G alloy welders, turbine mechanics and safety stewards.',
+      title: 'SPECIALISED DEDICATED TEAM',
+      desc: 'Engineers, supervisors, a BOE certified team, 6G welders, riggers and skilled technicians.',
       linkText: 'SEE CADRE BREAKDOWN',
       linkHref: '#manpower-chart',
     },
     {
       type: 'stat',
-      value: '1,343+',
-      label: 'PERSONNEL STRENGTH',
+      value: '1,343',
+      label: 'TOTAL MANPOWER',
       badgeIcon: true,
     },
     {
       type: 'feature',
       iconImg: '/images/generated/tree_icon.jpg',
-      title: '6 STATES COVERAGE',
-      desc: '1,003 permanent rolls and verified reserve talent pools ready on short notice.',
+      title: '6 STATES',
+      desc: 'Andhra Pradesh, Telangana, Jharkhand, Rajasthan, Tamil Nadu and Chhattisgarh.',
     },
   ];
 
@@ -35,10 +35,10 @@ export default function Manpower() {
     <>
       <PageHero
         image="/images/generated/hero_manpower.jpg"
-        eyebrow="NATIONWIDE SKILLED WORKFORCE"
-        title="1,343 POWER PROFESSIONALS READY ACROSS SIX STATES"
-        text="Specialised operations crews, qualified electrical supervisors, precision mechanics, and seasoned plant technicians ready to staff shutdowns and ongoing plant cycles."
-        ctaText="Mobilise Manpower"
+        eyebrow="MANPOWER ACROSS THE COUNTRY"
+        title="1,343 PEOPLE ACROSS SIX STATES"
+        text="1,003 on permanent rolls and a further call pool tied up within each state to meet customer requirements within the shortest time."
+        ctaText="Request Manpower"
         onCtaClick={() => openQuote('Manpower Deployment')}
         cards={manpowerCards}
       />

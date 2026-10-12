@@ -16,21 +16,21 @@ export default function About() {
       type: 'wide',
       thumb: '/images/service-7.jpg',
       title: 'FOUNDED BY ENGINEERS',
-      desc: 'Decades of combined power plant leadership, operations and engineering mastery.',
+      desc: 'Led by VP Chandra Sekhar, B.E. (Electrical), \'A\' Grade Electrical Licence holder for all voltages.',
       linkText: 'EXPLORE OUR STORY',
       linkHref: '#timeline-section',
     },
     {
       type: 'stat',
-      value: '25+ YRS',
-      label: 'FIELD EXPERTISE',
+      value: '20+ YRS',
+      label: 'FOUNDER EXPERIENCE',
       badgeIcon: true,
     },
     {
       type: 'feature',
       iconImg: '/images/generated/tree_icon.jpg',
-      title: 'IBR & SPECIAL CLASS',
-      desc: 'Government-endorsed A-grade electrical contractors and certified statutory experts.',
+      title: 'SPECIAL CLASS IBR',
+      desc: 'Special Class IBR and Electrical \'A\' Grade licences, issued by Rajasthan and endorsed by AP state.',
     },
   ];
 
@@ -38,9 +38,9 @@ export default function About() {
     <>
       <PageHero
         image="/images/generated/hero_about.jpg"
-        eyebrow="ABOUT TRIPLE E SERVICES"
+        eyebrow="ABOUT US"
         title="ENGINEERS WHO RUN POWER PLANTS"
-        text="Specialised engineering services relating to power plants, substations, and mega-scale industries led by veteran leaders with decades of field stewardship."
+        text="Triple E Services is primarily engaged in providing services relating to power plants and industry, led by engineers with decades of field experience."
         ctaText="Meet Our Team"
         onCtaClick={() => {
           document.getElementById('timeline-section')?.scrollIntoView({ behavior: 'smooth' }) ||

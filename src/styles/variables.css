@@ -55,11 +55,17 @@
   --shadow-lg: 0 26px 60px rgba(26, 34, 23, 0.22);
   --ease: cubic-bezier(0.22, 1, 0.36, 1);
 
-  --header-h: 84px;
+  --header-h: 72px;
   --topbar-h: 38px;
   --maxw: 1240px;
   --gutter: 16px;
 }
 @media (min-width: 768px) {
-  :root { --gutter: 28px; }
+  :root { --gutter: 24px; }
+}
+@media (min-width: 1024px) {
+  :root {
+    --header-h: 84px;
+    --gutter: 28px;
+  }
 }

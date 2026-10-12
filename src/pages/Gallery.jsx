@@ -12,22 +12,22 @@ export default function Gallery() {
     {
       type: 'wide',
       thumb: '/images/service-2.jpg',
-      title: 'PRECISION IN ACTION',
-      desc: 'On-site snapshots of turbine overhauls, 400kV substation lines, and boiler revamps.',
+      title: 'PHOTOS FROM OUR SITES',
+      desc: 'Quad line maintenance, bed coil replacement, substation works and panel erection.',
       linkText: 'VIEW FIELD ALBUM',
       linkHref: '#gallery-grid',
     },
     {
       type: 'stat',
-      value: '500+',
-      label: 'SITE EXECUTIONS',
+      value: '4',
+      label: 'PHOTO CATEGORIES',
       badgeIcon: true,
     },
     {
       type: 'feature',
       iconImg: '/images/generated/tree_icon.jpg',
-      title: 'SAFETY PROTOCOLS',
-      desc: 'Strict PPE compliance, certified staging, and zero-accident execution in the field.',
+      title: 'SAFE EXECUTION',
+      desc: 'PTW systems, LOTO procedures and toolbox talks on every job.',
     },
   ];
 
@@ -35,10 +35,10 @@ export default function Gallery() {
     <>
       <PageHero
         image="/images/generated/hero_gallery.jpg"
-        eyebrow="FIELD VISUALS & SITES"
-        title="FROM THE FIELD: ENGINEERING AT WORK"
-        text="High-voltage switchyards, thermal boiler retrofits, emergency overhaul operations, and precision alloy pipeline fabrication across client plants."
-        ctaText="Request Site Visit"
+        eyebrow="PHOTOS"
+        title="FROM THE FIELD"
+        text="Operation & maintenance, overhaul and revamp, erection and shutdown, fabrication and pipeline works."
+        ctaText="Get a Quote"
         onCtaClick={() => openQuote('Site Visit Enquiry')}
         cards={galleryCards}
       />

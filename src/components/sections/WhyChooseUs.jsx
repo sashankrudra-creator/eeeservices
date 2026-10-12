@@ -3,84 +3,55 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowUpRight, CheckCircle2 } from 'lucide-react';
 import SectionHeading from '../ui/SectionHeading';
 import Reveal from '../ui/Reveal';
+import { maintenanceSteps, safetyChips } from '../../data/capabilities';
 
+// Every line below is taken from src/data (company profile).
 const strengths = [
   {
-    tag: 'Statutory Certification',
-    title: 'Dual State Accreditations',
-    client: 'Rajasthan & AP State Endorsed',
-    desc: 'Special Class IBR Boiler License and Electrical ‘A’ Grade License enabling multi-state heavy industrial execution.',
+    tag: 'Licensed & certified',
+    title: "Special Class IBR & 'A' Grade Electrical",
+    client: 'Issued by Rajasthan · Endorsed by AP',
+    desc: 'Special Class IBR licence and Electrical "A" Grade licence (all voltages), both issued by Rajasthan and endorsed by AP state.',
     image: '/images/generated/hero_industrial_plant.jpg',
   },
   {
-    tag: 'Large Scale O&M',
-    title: 'Proven 135 MW Unit Mastery',
-    client: 'Single-Point Accountability',
-    desc: 'Demonstrated single-source O&M stewardship of 1x135 MW thermal power facility (VSLP) with continuous 99%+ availability.',
+    tag: 'Power plant O&M',
+    title: '1x135 MW Power Plant O&M',
+    client: 'VSLP · Rajasthan · Since Oct 2018',
+    desc: 'Operation and maintenance of a 1x135 MW power plant, continuing since October 2018. Also: 135 MW (Harbin make) generator repair work in 2019.',
     image: '/images/generated/power_plant_turbine.jpg',
   },
   {
-    tag: 'Certified Technical Fleet',
-    title: '1,300+ Skilled Manpower Strength',
-    client: 'Deployed Across 6 Industrial States',
-    desc: 'BOE-certified power engineers, 6G alloy welders, HT substation technicians, and rigging crews mobilised across India.',
+    tag: 'Manpower',
+    title: '1,343 Manpower Across 6 States',
+    client: '1,003 on permanent rolls',
+    desc: 'A further call pool is tied up within each state so customer requirements can be met within the shortest time.',
     image: '/images/generated/control_room_scada.jpg',
   },
   {
-    tag: 'Quality & Safety Assurance',
-    title: 'In-House Advanced NDT Testing',
-    client: 'UT · MPI · DP · Radiography',
-    desc: 'Dedicated non-destructive testing teams equipped for full weld integrity, flaw detection, and thickness monitoring.',
+    tag: 'Quality',
+    title: 'In-house Qualified NDT',
+    client: 'UT · MPI · DP · Hardness · Radiography',
+    desc: 'Ultrasonic, magnetic particle, dye penetrant, hardness and radiography testing by our own qualified team.',
     image: '/images/generated/boiler_pipeline.jpg',
   },
   {
-    tag: 'Regulatory Clearances',
-    title: 'CEA & CIEG Statutory Liaison',
-    client: 'Chief Electrical Inspectorate Sign-offs',
-    desc: 'Rapid regulatory approvals and statutory clearances to commission high-voltage substations with zero commissioning lag.',
+    tag: 'Statutory liaison',
+    title: 'Electrical & Boiler Approvals',
+    client: 'IBR · CIEG · PCB · CEA',
+    desc: 'Liaisoning of electrical and boiler jobs: IBR, CIEG and PCB approvals, drawing approvals and CEA.',
     image: '/images/generated/substation_400kv.jpg',
   },
   {
-    tag: 'Heavy Infrastructure',
-    title: '400 kV Grid Corridors & Substation Erection',
-    client: 'Extra-High Voltage Transmission',
-    desc: 'Turnkey transformer bay erection, gantry towers, and 24/7 double-circuit transmission line maintenance.',
+    tag: 'Ramp-up capability',
+    title: '600–700 Resources in a Single Instance',
+    client: 'Revamp & restoration · 2019',
+    desc: 'About 600–700 gang resources were mobilised across multiple locations on two occasions in 2019 for revamp and restoration work.',
     image: '/images/generated/transmission_grid.jpg',
   },
 ];
 
-const lifecycleSteps = [
-  {
-    num: '01',
-    phase: 'System Audit & Baselining',
-    desc: 'Comprehensive thermodynamic & vibration analysis to establish operational baseline and benchmark against OEM specs.',
-  },
-  {
-    num: '02',
-    phase: 'Preventive & Predictive Scheduling',
-    desc: 'Real-time telemetry, thermography, and oil degradation tracking to preempt unplanned outages and equipment wear.',
-  },
-  {
-    num: '03',
-    phase: 'Planned Shutdown Execution',
-    desc: 'Deployment of specialized 6G welding teams, boiler tube replacement, and turbine rotor overhauls during scheduled turnarounds.',
-  },
-  {
-    num: '04',
-    phase: 'Statutory Compliance & Testing',
-    desc: 'IBR hydraulic pressure tests, relay calibration, HT insulation resistance testing, and certified CEIG sign-offs.',
-  },
-  {
-    num: '05',
-    phase: 'Ramping & Synchronisation',
-    desc: 'Precision cold/hot startup protocol, grid synchronization up to 400 kV, and balance-of-plant stabilization.',
-  },
-  {
-    num: '06',
-    phase: 'Continuous Reliability Upkeep',
-    desc: '24/7 SCADA operational control, routine safety drills, spare parts rationalization, and monthly plant heat-rate reviews.',
-  },
-];
+const lifecycleSteps = maintenanceSteps.map((m, i) => ({ num: String(i + 1).padStart(2, '0'), phase: m.title, desc: m.text }));
 
 export default function WhyChooseUs() {
   const [activeStep, setActiveStep] = useState(0);
@@ -90,8 +61,8 @@ export default function WhyChooseUs() {
       <div className="container">
         <SectionHeading
           tag="Why Triple E Services"
-          title="Engineering Rigour. Certified Credentials. Unbroken Availability."
-          text="When critical power infrastructure is on the line, Tier-1 industrial leaders depend on Triple E Services for certified capability and disciplined execution."
+          title="Licensed, experienced and ready to mobilise."
+          text="Statutory licences, senior engineers with decades of plant experience, and manpower on rolls across six states."
           light
           className="sh--editorial"
         />
@@ -100,19 +71,19 @@ export default function WhyChooseUs() {
         <div className="why-metrics-bar">
           <div className="why-metric">
             <span className="why-metric__val">135 MW</span>
-            <span className="why-metric__lbl">Plant Unit O&amp;M Proven</span>
+            <span className="why-metric__lbl">Power plant O&amp;M</span>
           </div>
           <div className="why-metric">
             <span className="why-metric__val">400 kV</span>
-            <span className="why-metric__lbl">Substation &amp; Line Capability</span>
+            <span className="why-metric__lbl">Transmission line O&amp;M</span>
           </div>
           <div className="why-metric">
-            <span className="why-metric__val">1,300+</span>
-            <span className="why-metric__lbl">Certified Technical Workforce</span>
+            <span className="why-metric__val">1,343</span>
+            <span className="why-metric__lbl">Total manpower</span>
           </div>
           <div className="why-metric">
             <span className="why-metric__val">6 States</span>
-            <span className="why-metric__lbl">Industrial Footprint Across India</span>
+            <span className="why-metric__lbl">States with manpower &amp; sites</span>
           </div>
         </div>
 
@@ -147,10 +118,10 @@ export default function WhyChooseUs() {
         {/* Maintenance Lifecycle Stepper */}
         <div className="why-lifecycle">
           <div className="why-lifecycle__header">
-            <div className="why-lifecycle__tag">O&amp;M EXECUTION PROTOCOL</div>
-            <h3 className="why-lifecycle__title">6-Phase Engineered Maintenance Lifecycle</h3>
+            <div className="why-lifecycle__tag">MAINTENANCE APPROACH</div>
+            <h3 className="why-lifecycle__title">A structured methodology, end to end</h3>
             <p className="why-lifecycle__text">
-              Our systematic approach guarantees plant safety, regulatory compliance, and thermal heat-rate efficiency from audit to continuous baseload operations.
+              Our maintenance planning focuses on identifying potential failures at an early stage, keeping critical equipment healthy and reducing forced outages.
             </p>
           </div>
 
@@ -178,7 +149,7 @@ export default function WhyChooseUs() {
               transition={{ duration: 0.35 }}
             >
               <div className="why-lifecycle__panel-badge">
-                Phase {lifecycleSteps[activeStep].num}
+                Step {lifecycleSteps[activeStep].num}
               </div>
               <h4 className="why-lifecycle__panel-title">
                 {lifecycleSteps[activeStep].phase}
@@ -187,9 +158,9 @@ export default function WhyChooseUs() {
                 {lifecycleSteps[activeStep].desc}
               </p>
               <div className="why-lifecycle__panel-checklist">
-                <span><CheckCircle2 size={16} /> Certified BOE Protocol</span>
-                <span><CheckCircle2 size={16} /> Zero Safety Incidents</span>
-                <span><CheckCircle2 size={16} /> Documented Quality Traceability</span>
+                {safetyChips.slice(0, 3).map((c) => (
+                  <span key={c}><CheckCircle2 size={16} /> {c}</span>
+                ))}
               </div>
             </motion.div>
           </AnimatePresence>

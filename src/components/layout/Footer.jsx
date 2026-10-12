@@ -12,9 +12,9 @@ export default function Footer() {
   return (
     <footer className="footer-editorial" aria-label="Site Footer">
       <div className="container">
-        {/* Giant Editorial Brand Watermark (Direct Reference 3 Inspiration) */}
+        {/* Giant Editorial Brand Watermark */}
         <div className="footer-editorial__watermark" aria-hidden="true">
-          <span>2026-Triple-E-Services</span>
+          <span>Energy · Execution · Efficiency</span>
         </div>
 
         {/* Structured Column Navigation */}
@@ -23,7 +23,7 @@ export default function Footer() {
           <div className="footer-col footer-col--brand">
             <Logo />
             <p className="footer-col__desc">
-              Pioneering turnkey electrical EPC, 400 kV extra-high-voltage substations, and comprehensive power plant &amp; boiler O&amp;M across 6 Indian industrial states.
+              Power plant O&amp;M, electrical EPC and expert manpower for power plants and industry across India.
             </p>
             <div className="footer-col__accreditations">
               <span className="footer-pill-badge">
@@ -37,32 +37,35 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* Column 2: Navigation */}
-          <div className="footer-col">
-            <h4 className="footer-col__title">Navigation</h4>
-            <ul className="footer-col__list">
-              {navLinks.slice(0, 6).map((l) => (
-                <li key={l.to}>
-                  <Link to={l.to} className="footer-col__link">
-                    {l.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
+          {/* Grouped Links Row on Mobile: Navigation & Engineering Services Side-by-Side */}
+          <div className="footer-editorial__nav-group">
+            {/* Column 2: Navigation */}
+            <div className="footer-col footer-col--nav">
+              <h4 className="footer-col__title">Navigation</h4>
+              <ul className="footer-col__list">
+                {navLinks.slice(0, 6).map((l) => (
+                  <li key={l.to}>
+                    <Link to={l.to} className="footer-col__link">
+                      {l.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
 
-          {/* Column 3: Core Capabilities */}
-          <div className="footer-col">
-            <h4 className="footer-col__title">Engineering Services</h4>
-            <ul className="footer-col__list">
-              {services.slice(0, 6).map((s) => (
-                <li key={s.slug}>
-                  <Link to={`/services#${s.slug}`} className="footer-col__link">
-                    {s.title}
-                  </Link>
-                </li>
-              ))}
-            </ul>
+            {/* Column 3: Engineering Services */}
+            <div className="footer-col footer-col--services">
+              <h4 className="footer-col__title">Engineering Services</h4>
+              <ul className="footer-col__list">
+                {services.slice(0, 6).map((s) => (
+                  <li key={s.slug}>
+                    <Link to={`/services#${s.slug}`} className="footer-col__link">
+                      {s.title}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
           </div>
 
           {/* Column 4: Offices & Direct Contacts */}
@@ -70,33 +73,46 @@ export default function Footer() {
             <h4 className="footer-col__title">Direct Contacts</h4>
             <div className="footer-col__office">
               <strong>{company.offices[0].title}</strong>
-              <p>
-                <MapPin size={14} />
+              <p className="footer-col__line">
+                <MapPin size={14} aria-hidden="true" />
                 <span>{company.offices[0].lines.join(' ')}</span>
               </p>
-              <p>
-                <Phone size={14} />
-                <a href={`tel:${company.offices[0].phones[0]}`}>
-                  +91 {company.offices[0].phones[0]}
-                </a>
-                <span> / </span>
-                <a href={`tel:${company.offices[0].phones[1]}`}>
-                  +91 {company.offices[0].phones[1]}
-                </a>
+              <p className="footer-col__line">
+                <Phone size={14} aria-hidden="true" />
+                <span className="footer-col__phone-numbers">
+                  <a href={`tel:${company.offices[0].phones[0]}`}>+91 {company.offices[0].phones[0]}</a>
+                  <span className="sep">/</span>
+                  <a href={`tel:${company.offices[0].phones[1]}`}>+91 {company.offices[0].phones[1]}</a>
+                </span>
               </p>
             </div>
 
             <div className="footer-col__office">
               <strong>{company.offices[1].title}</strong>
-              <p>
-                <MapPin size={14} />
+              <p className="footer-col__line">
+                <MapPin size={14} aria-hidden="true" />
                 <span>{company.offices[1].lines.join(' ')}</span>
+              </p>
+              <p className="footer-col__line">
+                <Phone size={14} aria-hidden="true" />
+                <span className="footer-col__phone-numbers">
+                  {company.offices[1].phones.map((ph, i) => (
+                    <span key={ph} className="footer-col__phone-item">
+                      {i > 0 && <span className="sep">/</span>}
+                      <a href={`tel:${ph}`}>+91 {ph}</a>
+                    </span>
+                  ))}
+                </span>
               </p>
             </div>
 
-            <div className="footer-col__email">
-              <Mail size={14} />
-              <a href={`mailto:${company.emails[0]}`}>{company.emails[0]}</a>
+            <div className="footer-col__emails">
+              {company.emails.map((m) => (
+                <p key={m} className="footer-col__line footer-col__email-item">
+                  <Mail size={14} aria-hidden="true" />
+                  <a href={`mailto:${m}`}>{m}</a>
+                </p>
+              ))}
             </div>
           </div>
         </div>
@@ -104,7 +120,7 @@ export default function Footer() {
         {/* Bottom Bar */}
         <div className="footer-editorial__bottom">
           <div className="footer-editorial__copy">
-            &copy; 2026 Triple E Services (Energy &bull; Execution &bull; Efficiency). All rights reserved.
+            &copy; {new Date().getFullYear()} Triple E Services. All rights reserved.
           </div>
           <button
             type="button"

@@ -14,6 +14,7 @@ export default function Navbar() {
   const y = useScrollPosition();
   const [open, setOpen] = useState(false);
   const [mega, setMega] = useState(false);
+  const [drawerServicesOpen, setDrawerServicesOpen] = useState(false);
   const { pathname } = useLocation();
   const { openQuote } = useApp();
   const scrolled = y > 40;
@@ -21,6 +22,7 @@ export default function Navbar() {
   useEffect(() => {
     setOpen(false);
     setMega(false);
+    setDrawerServicesOpen(false);
   }, [pathname]);
 
   useEffect(() => {
@@ -85,7 +87,11 @@ export default function Navbar() {
           )}
         </nav>
         <div className="nav__cta">
-          <Button size="sm" onClick={() => openQuote()}>CONTACT US</Button>
+          <a className="nav__phone" href={`tel:${company.offices[0].phones[0]}`}>
+            <span className="nav__phone-ic"><Phone size={16} aria-hidden="true" /></span>
+            <span><small>Call us</small>+91 {company.offices[0].phones[0]}</span>
+          </a>
+          <Button size="sm" onClick={() => openQuote()} iconRight={<ArrowRight size={15} />}>Contact Us</Button>
         </div>
         <button className="nav__burger" onClick={() => setOpen(true)} aria-label="Open menu" aria-expanded={open}><Menu size={26} /></button>
       </div>
@@ -101,9 +107,50 @@ export default function Navbar() {
             <nav className="drawer__links" aria-label="Mobile">
               {navLinks.map((l, i) => (
                 <motion.div key={l.to} initial={{ opacity: 0, x: 24 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.05 + i * 0.04 }}>
-                  <NavLink to={l.to} end={l.to === '/'} className={({ isActive }) => `drawer__link ${isActive ? 'is-active' : ''}`}>
-                    {l.label} <ArrowRight size={18} aria-hidden="true" />
-                  </NavLink>
+                  {l.mega ? (
+                    <div className="drawer__mega-group">
+                      <div className="drawer__link-row">
+                        <NavLink to={l.to} className={({ isActive }) => `drawer__link ${isActive ? 'is-active' : ''}`} onClick={() => setOpen(false)}>
+                          {l.label}
+                        </NavLink>
+                        <button
+                          type="button"
+                          className="drawer__sub-toggle"
+                          onClick={() => setDrawerServicesOpen(!drawerServicesOpen)}
+                          aria-label="Toggle services list"
+                          aria-expanded={drawerServicesOpen}
+                        >
+                          <ChevronDown size={18} className={drawerServicesOpen ? 'is-open' : ''} />
+                        </button>
+                      </div>
+                      <AnimatePresence>
+                        {drawerServicesOpen && (
+                          <motion.div
+                            className="drawer__sublinks"
+                            initial={{ opacity: 0, height: 0 }}
+                            animate={{ opacity: 1, height: 'auto' }}
+                            exit={{ opacity: 0, height: 0 }}
+                            transition={{ duration: 0.2 }}
+                          >
+                            {services.map((s) => (
+                              <NavLink key={s.slug} to={`/services#${s.slug}`} className="drawer__sublink" onClick={() => setOpen(false)}>
+                                <Icon name={s.icon} size={16} />
+                                <span>{s.title}</span>
+                              </NavLink>
+                            ))}
+                            <NavLink to="/operations-maintenance#capabilities" className="drawer__sublink drawer__sublink--hl" onClick={() => setOpen(false)}>
+                              <Icon name="Settings" size={16} />
+                              <span>O&amp;M Capabilities <ArrowRight size={13} aria-hidden="true" /></span>
+                            </NavLink>
+                          </motion.div>
+                        )}
+                      </AnimatePresence>
+                    </div>
+                  ) : (
+                    <NavLink to={l.to} end={l.to === '/'} className={({ isActive }) => `drawer__link ${isActive ? 'is-active' : ''}`} onClick={() => setOpen(false)}>
+                      {l.label} <ArrowRight size={18} aria-hidden="true" />
+                    </NavLink>
+                  )}
                 </motion.div>
               ))}
             </nav>

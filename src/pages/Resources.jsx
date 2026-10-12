@@ -13,22 +13,22 @@ export default function Resources() {
     {
       type: 'wide',
       thumb: '/images/service-4.jpg',
-      title: 'TESTING & RIGGING FLEET',
-      desc: 'Advanced relay test benches, secondary injection kits, and heavy crane rigs.',
+      title: 'TOOLS & TACKLES',
+      desc: 'Relay testing equipment, generators (5–50 KVA), welding and plasma cutting sets, hydra, winches and hoists.',
       linkText: 'VIEW WORKSHOP ASSETS',
       linkHref: '#resources-blocks',
     },
     {
       type: 'stat',
-      value: '24/7',
-      label: 'MOBILISATION READY',
+      value: '600–700',
+      label: 'RESOURCES MOBILISED AT ONCE',
       badgeIcon: true,
     },
     {
       type: 'feature',
       iconImg: '/images/generated/tree_icon.jpg',
-      title: 'CALIBRATED TOOLING',
-      desc: 'NABL traceable test equipment and certified NDT instruments always in inventory.',
+      title: 'IN-HOUSE NDT',
+      desc: 'Ultrasonic, MPI, dye penetrant, hardness and radiography by a qualified in-house team.',
     },
   ];
 
@@ -36,10 +36,10 @@ export default function Resources() {
     <>
       <PageHero
         image="/images/generated/hero_resources.jpg"
-        eyebrow="ENGINEERING INFRASTRUCTURE & TOOLS"
-        title="THE PEOPLE & ADVANCED EQUIPMENT BEHIND EVERY JOB"
-        text="Specialised workshops, high-precision calibration benches, heavy rigging machinery, and rapid mobilization capabilities ready to deploy across 6 states."
-        ctaText="Request Equipment & Crew"
+        eyebrow="RESOURCES"
+        title="THE PEOPLE AND EQUIPMENT BEHIND EVERY JOB"
+        text="Skilled manpower, tools, workshops and in-house testing, ready to mobilise at short notice."
+        ctaText="Request a Quote"
         onCtaClick={() => openQuote('Equipment & Crew Mobilisation')}
         cards={resourceCards}
       />

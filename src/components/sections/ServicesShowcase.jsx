@@ -2,66 +2,29 @@ import { Link } from 'react-router-dom';
 import { ArrowUpRight } from 'lucide-react';
 import SectionHeading from '../ui/SectionHeading';
 import Reveal from '../ui/Reveal';
+import { services } from '../../data/services';
 
-const showcaseServices = [
-  {
-    slug: 'power-plant-om',
-    title: 'Integrated Power Plant O&M',
-    tag: 'BTG · BOP · CHP · Ash Handling',
-    desc: 'Round-the-clock operation and predictive maintenance for thermal, captive co-gen, and renewable plants with proven 135 MW single-unit capability.',
-    image: '/images/generated/power_plant_turbine.jpg',
-    client: '135 MW Proven · Thermal Utility',
-  },
-  {
-    slug: 'substation-transmission-om',
-    title: 'Substation & Transmission up to 400 kV',
-    tag: 'Extra High Voltage Corridors',
-    desc: 'Erection, protection testing, switchyard maintenance, and round-the-clock line patrolling for double-circuit lines up to 400 kV.',
-    image: '/images/generated/substation_400kv.jpg',
-    client: 'Up to 400 kV · Switchyard AMC',
-  },
-  {
-    slug: 'pipeline-fabrication',
-    title: 'Special Class IBR Boiler & Piping',
-    tag: 'Certified 6G Welding & NDT',
-    desc: 'High-pressure steam piping fabrication, AFBC / CFBC boiler overhauls, in-house radiography, UT, and MPI non-destructive testing.',
-    image: '/images/generated/boiler_pipeline.jpg',
-    client: 'Special Class IBR · In-house NDT',
-  },
-  {
-    slug: 'erection-commissioning',
-    title: 'Heavy Erection & Turnkey Commissioning',
-    tag: 'Transformers · Turbines · Switchgear',
-    desc: 'Heavy lift rigging, mechanical alignment, transformer bay erection, and complete statutory CEA & CIEG liaisoning with zero compliance delays.',
-    image: '/images/generated/transformer_erection.jpg',
-    client: 'CEA & CIEG Approved · Heavy Rigging',
-  },
-  {
-    slug: 'turnkey-projects',
-    title: 'Solar & Hybrid Renewable Infrastructure',
-    tag: 'Utility Scale Clean Energy',
-    desc: 'End-to-end solar EPC, HT switchyard integration, SCADA automated monitoring, and inverter station upkeep ensuring peak generation yield.',
-    image: '/images/generated/renewable_hybrid_plant.jpg',
-    client: 'Turnkey EPC · Solar & Hybrid',
-  },
-  {
-    slug: 'manpower-troubleshooting',
-    title: 'Specialist Manpower & Root Cause Analysis',
-    tag: 'BOE Engineers · Qualified Crews',
-    desc: 'Deployment of 1,300+ vetted engineers, condition monitoring specialists, and licensed operators backed by senior troubleshooting directors.',
-    image: '/images/generated/control_room_scada.jpg',
-    client: '1,300+ Experts · 6 States',
-  },
-];
+// Text comes straight from src/data/services.js; tags/labels only restate facts from the same file.
+const meta = {
+  'power-plant-om': { tag: 'Thermal · Solar · DG · Windmill', client: 'Comprehensive or package basis', image: '/images/generated/power_plant_turbine.jpg' },
+  'substation-transmission-om': { tag: 'Up to 400 kV', client: 'Substations · Switchyards · Lines', image: '/images/generated/substation_400kv.jpg' },
+  'pipeline-fabrication': { tag: 'Oil · Steam · Water', client: 'IBR-certified 6G welders · In-house NDT', image: '/images/generated/boiler_pipeline.jpg' },
+  'erection-commissioning': { tag: 'Testing · CEA & CIEG', client: 'Power plants & electrical systems', image: '/images/generated/transformer_erection.jpg' },
+  'turnkey-projects': { tag: 'Solar plants · Substations', client: 'Single point of responsibility', image: '/images/generated/renewable_hybrid_plant.jpg' },
+  'manpower-troubleshooting': { tag: 'BOE-certified team', client: 'Engineers · Supervisors · Technicians', image: '/images/generated/control_room_scada.jpg' },
+};
+const showcaseServices = services
+  .filter((s) => meta[s.slug])
+  .map((s) => ({ slug: s.slug, title: s.title, desc: s.short, ...meta[s.slug] }));
 
 export default function ServicesShowcase() {
   return (
     <section className="section section--services" id="services-section">
       <div className="container">
         <SectionHeading
-          tag="Engineering Capabilities"
-          title="Engineered for Critical Uptime &amp; High-Voltage Safety."
-          text="Explore our core service lines delivering end-to-end engineering excellence across power generation, high-voltage transmission, and industrial utility systems."
+          tag="What we do"
+          title="Eight services. One accountable partner."
+          text="From daily plant operations to turnkey electrical projects, our integrated teams cover the full life of your power and utility assets."
           className="sh--editorial"
         />
 
@@ -98,6 +61,11 @@ export default function ServicesShowcase() {
               </div>
             </Reveal>
           ))}
+        </div>
+        <div className="section-more">
+          <Link to="/services" className="section-more__link">
+            View all {services.length} services <ArrowUpRight size={16} aria-hidden="true" />
+          </Link>
         </div>
       </div>
     </section>

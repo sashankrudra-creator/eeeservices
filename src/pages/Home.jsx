@@ -11,16 +11,16 @@ import useDocumentTitle from '../hooks/useDocumentTitle';
 const chips = [
   'Special Class IBR',
   "'A' Grade Electrical",
-  'BOE Certified Engineers',
-  '400 kV Infrastructure',
-  'In-house NDT Testing',
-  '6G Alloy Welders',
-  '135 MW Unit Stewardship',
+  'BOE Certified Team',
+  'Transmission Lines up to 400 kV',
+  'In-house NDT',
+  'IBR 6G Welders',
+  '1x135 MW Power Plant O&M',
   'CEA & CIEG Liaison',
 ];
 
 export default function Home() {
-  useDocumentTitle('Triple E Services — Electrical Engineering, EPC & Power Infrastructure');
+  useDocumentTitle('');
 
   return (
     <div className="page-home-redesign">

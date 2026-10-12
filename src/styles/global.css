@@ -1,7 +1,9 @@
 *, *::before, *::after { box-sizing: border-box; }
-html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; scroll-padding-top: calc(var(--header-h) + 16px); }
 body {
   margin: 0;
+  width: 100%;
+  max-width: 100vw;
   font-family: var(--font-body);
   font-size: 16px;
   line-height: 1.65;
@@ -16,7 +18,7 @@ p { margin: 0 0 1em; }
 ul, ol { margin: 0; padding: 0; list-style: none; }
 a { color: inherit; text-decoration: none; }
 button { font: inherit; color: inherit; cursor: pointer; background: none; border: 0; padding: 0; }
-input, select, textarea { font: inherit; color: inherit; }
+input, select, textarea { font: inherit; font-size: 16px; color: inherit; }
 address { font-style: normal; }
 blockquote { margin: 0; }
 :focus-visible { outline: 3px solid var(--sage); outline-offset: 3px; border-radius: 6px; }
@@ -30,16 +32,28 @@ blockquote { margin: 0; }
 .container--narrow { max-width: calc(860px + var(--gutter) * 2); }
 
 /* ---------- Sections ---------- */
-.section { padding: 72px 0; position: relative; }
-.section--tight { padding: 48px 0; }
+.section { padding: 56px 0; position: relative; }
+.section--tight { padding: 36px 0; }
 .section--mist { background: var(--cream); }
 .section--white { background: var(--white); }
+@media (min-width: 768px) {
+  .section { padding: 72px 0; }
+  .section--tight { padding: 48px 0; }
+}
 @media (min-width: 1024px) { .section { padding: 100px 0; } }
 
 /* Deep Olive engineering section (soft cream & white text) */
 .section--dark { background: var(--olive-dd); color: #fff; overflow: hidden; }
 .section--dark h1, .section--dark h2, .section--dark h3 { color: #fff; }
 .section--dark .lead, .section--dark p { color: rgba(242, 239, 234, 0.9); }
+.section--dark .why-lifecycle__panel p,
+.section--dark .card p,
+.section--dark .panel p { color: var(--ink-2); }
+.section--dark .why-lifecycle__panel h1,
+.section--dark .why-lifecycle__panel h2,
+.section--dark .why-lifecycle__panel h3,
+.section--dark .why-lifecycle__panel h4,
+.section--dark .card h3 { color: var(--ink); }
 .section--dark > .container { position: relative; z-index: 1; }
 .section--grid::before {
   content: ''; position: absolute; inset: 0; pointer-events: none;

@@ -9,22 +9,22 @@ export default function Contact() {
     {
       type: 'wide',
       thumb: '/images/service-8.jpg',
-      title: 'HEADQUARTERS & HUBS',
-      desc: 'Offices in Visakhapatnam & regional project centers active across India.',
+      title: 'TWO OFFICES IN ANDHRA PRADESH',
+      desc: 'Registered Office in Ranastalam, Srikakulam and Administrative Office in Thotapalem, Vizianagaram.',
       linkText: 'FIND LOCATION',
       linkHref: '#contact-details',
     },
     {
       type: 'stat',
-      value: '< 24H',
-      label: 'RESPONSE TIME',
+      value: '2',
+      label: 'OFFICES',
       badgeIcon: true,
     },
     {
       type: 'feature',
       iconImg: '/images/generated/tree_icon.jpg',
-      title: 'DIRECT CONSULTATION',
-      desc: 'Talk directly to senior chief engineers and technical operations leads.',
+      title: 'CALL OR EMAIL',
+      desc: '9494694787 · info@eeeservices.in',
     },
   ];
 
@@ -32,9 +32,9 @@ export default function Contact() {
     <>
       <PageHero
         image="/images/generated/hero_contact.jpg"
-        eyebrow="GET IN TOUCH"
-        title="LET'S TALK ABOUT YOUR POWER PLANT & FACILITY"
-        text="Visit either of our offices, connect directly with our chief engineers, or submit a request for an on-site feasibility inspection."
+        eyebrow="CONTACT"
+        title="LET'S TALK ABOUT YOUR PLANT"
+        text="Visit either of our offices, call us, or send an enquiry below."
         ctaText="Send Message"
         onCtaClick={() => {
           document.getElementById('contact-details')?.scrollIntoView({ behavior: 'smooth' }) ||

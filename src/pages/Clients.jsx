@@ -13,22 +13,22 @@ export default function Clients() {
     {
       type: 'wide',
       thumb: '/images/service-6.jpg',
-      title: 'ENTERPRISE PARTNERSHIPS',
-      desc: 'Decade-long relationships with blue-chip power, pharma, port, and cement leaders.',
-      linkText: 'SEE TESTIMONIALS',
+      title: 'LONG-RUNNING CONTRACTS',
+      desc: 'Substation O&M at Trimex Sands since 2012 and utility O&M at SMS Pharma since 2015.',
+      linkText: 'SEE ALL CLIENTS',
       linkHref: '#clients-wall',
     },
     {
       type: 'stat',
-      value: '40+',
-      label: 'INDUSTRIAL GIANTS',
+      value: '27',
+      label: 'CLIENTS & PARTNERS',
       badgeIcon: true,
     },
     {
       type: 'feature',
       iconImg: '/images/generated/tree_icon.jpg',
-      title: 'HIGH RETENTION',
-      desc: '95%+ repeat business rate founded on engineering integrity and SLA perfection.',
+      title: '8 INDUSTRIES',
+      desc: 'Power, pharma, metals & alloys, cement, bio / distillery, ports, dairy & food and mining.',
     },
   ];
 
@@ -36,10 +36,10 @@ export default function Clients() {
     <>
       <PageHero
         image="/images/generated/hero_clients.jpg"
-        eyebrow="STRATEGIC INDUSTRY PARTNERS"
-        title="TRUSTED BY POWER PLANTS & CONGLOMERATES ACROSS INDIA"
-        text="Partnering with industry pioneers in power generation, pharmaceuticals, metals, cement, green bio-fuels, and deep-water ports."
-        ctaText="Become a Partner"
+        eyebrow="OUR CLIENTS"
+        title="TRUSTED BY PLANTS ACROSS INDUSTRIES"
+        text="Power, pharma, metals and alloys, cement, bio-fuels, ports and more."
+        ctaText="Get a Quote"
         onCtaClick={() => openQuote('Enterprise Partnership')}
         cards={clientCards}
       />

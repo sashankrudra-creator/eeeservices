@@ -5,66 +5,67 @@ import { Link } from 'react-router-dom';
 import SectionHeading from '../ui/SectionHeading';
 import Reveal from '../ui/Reveal';
 
+// Taken from src/data/contracts.js and src/data/electricalProjects.js.
 const projects = [
   {
     id: 1,
-    title: '1x135 MW Power Plant O&M',
+    title: 'O&M of 1x135 MW Power Plant',
     client: 'VSLP',
-    sector: 'Thermal Power Utility',
+    sector: 'Power Plant O&M',
     location: 'Rajasthan',
     period: 'Since Oct 2018',
     image: '/images/generated/hero_industrial_plant.jpg',
-    description: 'Comprehensive BTG, BOP, CHP & ash handling plant operations with 99%+ availability.',
+    description: 'Operation and maintenance of a 1x135 MW power plant, continuing since October 2018.',
   },
   {
     id: 2,
-    title: '400 kV Transmission Line O&M',
-    client: 'JSW-MPCL / KMPCL',
-    sector: 'Extra-High Voltage Grid',
+    title: 'O&M of 400 kV Transmission Line, 27 km',
+    client: 'JSW-MPCL',
+    sector: 'Transmission',
     location: 'Chhattisgarh',
-    period: '27 km Double Circuit',
+    period: 'Since Jun 2018',
     image: '/images/generated/transmission_grid.jpg',
-    description: 'Round-the-clock maintenance of 400 kV double circuit transmission line and gantry towers.',
+    description: 'O&M of a 27 km 400 kV line since June 2018, plus AMC for 400 kV double circuit quad line maintenance (JSW-KMPCL) since 2019.',
   },
   {
     id: 3,
-    title: '38.5 MW PF Boiler Plant E&I',
-    client: 'Bokaro Power Supply Co.',
-    sector: 'Central Govt Power Facility',
+    title: 'Electrical & C&I O&M, 38.5 MW PF Boiler Power Plant',
+    client: 'Bokaro Power Supply Co. (Central Govt)',
+    sector: 'Power Plant E&I',
     location: 'Jharkhand',
     period: 'Since Jan 2021',
     image: '/images/generated/control_room_scada.jpg',
-    description: 'Comprehensive electrical and instrumentation operations, SCADA telemetry, and maintenance.',
+    description: 'Electrical and C&I operation and maintenance of a 38.5 MW PF boiler power plant, continuing since January 2021.',
   },
   {
     id: 4,
-    title: '220 kV Substation & 36 MVA Furnace',
+    title: '220 kV Substation Works',
     client: 'Sarda Metals & Alloys',
-    sector: 'Industrial Metallurgy',
+    sector: 'Substation',
     location: 'Andhra Pradesh',
-    period: 'Turnkey Erection',
+    period: 'Feb 2022',
     image: '/images/generated/transformer_erection.jpg',
-    description: 'High-voltage substation transformer bay installation, testing, and CEA/CIEG approvals.',
+    description: 'Supply, erection and commissioning of 220 kV substation works, followed by 36 MVA submerged furnace works in August 2022.',
   },
   {
     id: 5,
-    title: 'High-Pressure Steam Pipeline Overhaul',
-    client: 'Thermax Partnered Units',
-    sector: 'Special Class IBR',
-    location: 'Odisha & Telangana',
-    period: '2025 – 2026',
+    title: 'Power & Distillery O&M under Thermax',
+    client: 'Coastal Bio · Vivek Bio · Tatsavi Manikanta',
+    sector: 'Power & Distillery',
+    location: 'Odisha · Telangana · Tamil Nadu',
+    period: 'Apr 2025 – 2026',
     image: '/images/generated/boiler_pipeline.jpg',
-    description: 'Alloy steel welding, precision pre-heating, and in-house NDT radiography compliance.',
+    description: 'O&M of power and distillery plants under Thermax at three sites across Odisha, Telangana and Tamil Nadu.',
   },
   {
     id: 6,
-    title: 'Utility-Scale Solar Plant O&M',
+    title: 'O&M of 1.65 MWp Solar Power Plant',
     client: 'Visakha Dairy',
-    sector: 'Renewable Power',
-    location: 'Vizianagaram, AP',
-    period: 'Since Jan 2021',
+    sector: 'Solar',
+    location: 'Andhra Pradesh',
+    period: 'Since 2021',
     image: '/images/generated/renewable_hybrid_plant.jpg',
-    description: 'Grid-tied solar array maintenance, inverter station upkeep, and telemetry monitoring.',
+    description: 'Solar O&M activities for the 1.65 MWp solar power plant at Visakha Dairy, continuing since 2021.',
   },
 ];
 
@@ -92,8 +93,9 @@ export default function ProjectsCarousel() {
     <section className="section section--projects" id="projects-section">
       <div className="container">
         <SectionHeading
-          tag="Projects &amp; Case Studies"
-          title="Explore our in-depth engineering case studies. Discover how our solutions enhance reliability and efficiency."
+          tag="Track record"
+          title="Featured projects."
+          text="A few of the plants, lines and substations we keep running every day."
           className="sh--editorial"
         />
 
@@ -124,7 +126,7 @@ export default function ProjectsCarousel() {
 
                 <div className="project-card__bottom">
                   <div className="project-card__info">
-                    <span className="project-card__client">{p.client} &bull; {p.location}</span>
+                    <span className="project-card__client">{p.client} &bull; {p.location} &bull; {p.period}</span>
                     <h3 className="project-card__title">{p.title}</h3>
                     <p className="project-card__desc">{p.description}</p>
                   </div>

@@ -5,26 +5,26 @@ import Reveal from '../ui/Reveal';
 
 const whoCards = [
   {
-    tag: 'Thermal & Captive Power',
-    title: 'Integrated Power Plant O&M',
-    client: '135 MW Unit Proven · BOE Certified',
-    desc: 'Comprehensive BTG, BOP, CHP, and ash handling plant operations ensuring 99%+ uptime across India.',
+    tag: 'Our business',
+    title: 'Solar Plants & Power Plants',
+    client: '1x135 MW power plant O&M · Since 2018',
+    desc: 'EPC and O&M for solar plants and power plants, from erection and commissioning to long-term operations.',
     image: '/images/generated/power_plant_turbine.jpg',
     link: '/services#power-plant-om',
   },
   {
-    tag: 'High Voltage Transmission',
-    title: '400 kV Substation & Switchyards',
-    client: 'Extra-High Voltage Grid · Double Circuit',
-    desc: 'Erection, protection testing, switchyard maintenance, and round-the-clock 400 kV corridor line patrolling.',
+    tag: "Electrical 'A' Grade",
+    title: 'Substations & Transmission Lines',
+    client: 'Up to 400 kV · 220 kV substation works',
+    desc: 'Operation and maintenance of substations, switchyards and transmission lines up to 400 kV, plus erection and commissioning.',
     image: '/images/generated/substation_400kv.jpg',
     link: '/services#substation-transmission-om',
   },
   {
     tag: 'Special Class IBR',
-    title: 'High-Pressure Boiler & Piping',
-    client: '6G Welders · In-house NDT Testing',
-    desc: 'High-pressure steam piping fabrication, AFBC / CFBC boiler overhauls, radiography, UT, and MPI compliance.',
+    title: 'Boiler O&M',
+    client: 'CFBC · AFBC · PF boilers · In-house NDT',
+    desc: 'Operation and maintenance of CFBC / AFBC / PF boilers, auxiliaries, pressure parts and shutdown activities.',
     image: '/images/generated/boiler_pipeline.jpg',
     link: '/services#pipeline-fabrication',
   },
@@ -35,9 +35,9 @@ export default function WhoWeAre() {
     <section className="section section--who" id="who-we-are">
       <div className="container">
         <SectionHeading
-          tag="Who We Are ?"
-          title="Reliable Power. Smarter Execution."
-          text="At Triple E Services (Energy · Execution · Efficiency), we build, commission, and sustain the vital power infrastructure of the nation operating across 6 industrial states."
+          tag="Who we are"
+          title="Engineers who run power plants."
+          text="Triple E Services is primarily engaged in providing services relating to power plants and industry, led by engineers with decades of field experience, with manpower and active sites across six states."
           className="sh--editorial"
         />
 
