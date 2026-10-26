@@ -7,7 +7,10 @@ import ScrollToTop from './components/layout/ScrollToTop';
 import ScrollProgress from './components/layout/ScrollProgress';
 import FloatingCTA from './components/layout/FloatingCTA';
 import { BoltMark } from './components/layout/Logo';
+import PopupAd from './components/ads/PopupAd';
+import AdScroller from './components/ads/AdScroller';
 
+const AdminApp = lazy(() => import('./pages/admin/AdminApp'));
 const Home = lazy(() => import('./pages/Home'));
 const About = lazy(() => import('./pages/About'));
 const Services = lazy(() => import('./pages/Services'));
@@ -30,6 +33,16 @@ function Loader() {
 
 export default function App() {
   const location = useLocation();
+
+  // The advertisement admin lives on its own screen, without the public site chrome.
+  if (location.pathname === '/admin' || location.pathname.startsWith('/admin/')) {
+    return (
+      <Suspense fallback={<Loader />}>
+        <AdminApp />
+      </Suspense>
+    );
+  }
+
   return (
     <>
       <a href="#main" className="skip">Skip to content</a>
@@ -57,8 +70,10 @@ export default function App() {
           </AnimatePresence>
         </Suspense>
       </main>
+      {location.pathname !== '/' && <AdScroller />}
       <Footer />
       <FloatingCTA />
+      <PopupAd />
     </>
   );
 }

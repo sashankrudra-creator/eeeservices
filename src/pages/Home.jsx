@@ -6,6 +6,7 @@ import ProjectsCarousel from '../components/sections/ProjectsCarousel';
 import ClientsMarquee from '../components/sections/ClientsMarquee';
 import EditorialCTA from '../components/sections/EditorialCTA';
 import Marquee from '../components/ui/Marquee';
+import AdScroller from '../components/ads/AdScroller';
 import useDocumentTitle from '../hooks/useDocumentTitle';
 
 const chips = [
@@ -37,6 +38,8 @@ export default function Home() {
           ))}
         </Marquee>
       </div>
+
+      <AdScroller />
 
       {/* 2. Who We Are (Reference 4) */}
       <WhoWeAre />

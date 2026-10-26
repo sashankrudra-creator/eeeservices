@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
-import { NavLink, useLocation } from 'react-router-dom';
+import { Link, NavLink, useLocation } from 'react-router-dom';
 import { AnimatePresence, motion } from 'framer-motion';
-import { ChevronDown, Mail, Menu, Phone, X, ArrowRight } from 'lucide-react';
+import { ChevronDown, Mail, Menu, Phone, X, ArrowRight, Lock } from 'lucide-react';
 import Logo from './Logo';
 import Icon from '../ui/Icon';
 import Button from '../ui/Button';
@@ -48,6 +48,10 @@ export default function Navbar() {
           <div className="topbar__badges">
             <span>Special Class IBR</span>
             <span>Electrical &lsquo;A&rsquo; Grade</span>
+            <Link to="/admin" className="topbar__admin-link" aria-label="Admin Portal">
+              <Lock size={12} aria-hidden="true" />
+              <span>Admin</span>
+            </Link>
           </div>
         </div>
       </div>
@@ -157,6 +161,10 @@ export default function Navbar() {
             <div className="drawer__foot">
               <Button onClick={() => { setOpen(false); openQuote(); }}>Get a Quote</Button>
               <Button variant="ghost" href={`tel:${company.offices[0].phones[0]}`} icon={<Phone size={16} />}>Call Now</Button>
+              <Link to="/admin" className="drawer__admin-link" onClick={() => setOpen(false)}>
+                <Lock size={14} aria-hidden="true" />
+                <span>Admin Login</span>
+              </Link>
             </div>
           </motion.div>
         )}

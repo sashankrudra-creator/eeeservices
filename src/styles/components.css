@@ -99,6 +99,25 @@
   background: rgba(61, 220, 107, 0.12); border: 1px solid rgba(61, 220, 107, 0.35);
 }
 .topbar__badges span::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: #3ddc6b; }
+.topbar__admin-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 3px 10px;
+  border-radius: 999px;
+  font-size: 11.5px;
+  font-weight: 600;
+  color: #fff;
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  transition: background 0.2s, border-color 0.2s;
+  margin-left: 6px;
+}
+.topbar__admin-link:hover {
+  background: rgba(255, 255, 255, 0.25);
+  border-color: #fff;
+  color: #fff;
+}
 
 .nav {
   display: flex;
@@ -220,6 +239,26 @@
 .drawer__foot { display: grid; gap: 12px; margin-top: auto; padding-top: 16px; }
 .drawer__foot .btn, .drawer__foot span { width: 100%; }
 .drawer__foot .btn--ghost { color: var(--olive); border-color: var(--olive); background: transparent; }
+.drawer__admin-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 11px;
+  font-family: var(--font-head);
+  font-size: 13.5px;
+  font-weight: 600;
+  color: var(--olive);
+  background: var(--sage-soft);
+  border: 1px dashed var(--sage-line);
+  border-radius: 10px;
+  margin-top: 2px;
+  transition: background 0.2s, color 0.2s;
+}
+.drawer__admin-link:hover {
+  background: var(--olive);
+  color: #fff;
+}
 
 .progress { position: fixed; top: 0; left: 0; right: 0; height: 3px; z-index: 150; transform-origin: 0; background: var(--sage); }
 
