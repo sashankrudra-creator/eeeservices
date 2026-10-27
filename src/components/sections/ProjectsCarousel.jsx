@@ -67,6 +67,16 @@ const projects = [
     image: '/images/generated/renewable_hybrid_plant.jpg',
     description: 'Solar O&M activities for the 1.65 MWp solar power plant at Visakha Dairy, continuing since 2021.',
   },
+  {
+    id: 7,
+    title: 'AFBC Boiler Bed Coil Replacement & Revamp',
+    client: 'Nagarjuna Group (Murugappa) & Industrial Plants',
+    sector: 'Boiler Overhaul',
+    location: 'Andhra Pradesh',
+    period: 'Continuing',
+    image: '/images/bed-coil-boiler.jpg',
+    description: 'Complete tube bending, bed coil replacement, hydrostatic testing and IBR certification for high-pressure industrial boilers.',
+  },
 ];
 
 export default function ProjectsCarousel() {

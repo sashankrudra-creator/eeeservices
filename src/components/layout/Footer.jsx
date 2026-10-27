@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { ArrowUp, Mail, MapPin, Phone, ShieldCheck, Award, Lock } from 'lucide-react';
+import { ArrowUp, Mail, MapPin, Phone, ShieldCheck, Award } from 'lucide-react';
 import Logo from './Logo';
 import { company, navLinks } from '../../data/company';
 import { services } from '../../data/services';
@@ -43,7 +43,7 @@ export default function Footer() {
             <div className="footer-col footer-col--nav">
               <h4 className="footer-col__title">Navigation</h4>
               <ul className="footer-col__list">
-                {navLinks.slice(0, 6).map((l) => (
+                {navLinks.map((l) => (
                   <li key={l.to}>
                     <Link to={l.to} className="footer-col__link">
                       {l.label}
@@ -121,11 +121,6 @@ export default function Footer() {
         <div className="footer-editorial__bottom">
           <div className="footer-editorial__copy">
             <span>&copy; {new Date().getFullYear()} Triple E Services. All rights reserved.</span>
-            <span className="footer-editorial__dot-sep" aria-hidden="true">&bull;</span>
-            <Link to="/admin" className="footer-editorial__admin-link" aria-label="Admin Portal">
-              <Lock size={12} aria-hidden="true" />
-              <span>Admin Portal</span>
-            </Link>
           </div>
           <button
             type="button"

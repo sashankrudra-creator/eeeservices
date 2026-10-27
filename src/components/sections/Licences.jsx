@@ -17,8 +17,8 @@ export default function Licences() {
   return (
     <section className="section">
       <div className="container">
-        <SectionHeading number="01" eyebrow="Licensed & certified" title="Statutory licences you can rely on" text="We hold both licences below, issued by Rajasthan and endorsed by AP state." />
-        <div className="grid grid--2">
+        <SectionHeading number="01" eyebrow="Licensed & certified" title="Statutory licences & ISO certifications you can rely on" text="We hold Special Class IBR and Electrical 'A' Grade statutory licences endorsed by AP state, alongside ISO certified management systems." />
+        <div className="grid grid--3">
           {company.licences.map((l, i) => (
             <Reveal key={l.id} delay={i * 0.1}>
               <div className="card licence">

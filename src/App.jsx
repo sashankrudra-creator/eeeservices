@@ -20,6 +20,8 @@ const Projects = lazy(() => import('./pages/Projects'));
 const Manpower = lazy(() => import('./pages/Manpower'));
 const Gallery = lazy(() => import('./pages/Gallery'));
 const Clients = lazy(() => import('./pages/Clients'));
+const Blog = lazy(() => import('./pages/Blog'));
+const BlogPost = lazy(() => import('./pages/BlogPost'));
 const Contact = lazy(() => import('./pages/Contact'));
 const NotFound = lazy(() => import('./pages/NotFound'));
 
@@ -35,7 +37,8 @@ export default function App() {
   const location = useLocation();
 
   // The advertisement admin lives on its own screen, without the public site chrome.
-  if (location.pathname === '/admin' || location.pathname.startsWith('/admin/')) {
+  const path = location.pathname.toLowerCase();
+  if (path === '/admineeeservices12' || path.startsWith('/admineeeservices12/')) {
     return (
       <Suspense fallback={<Loader />}>
         <AdminApp />
@@ -63,6 +66,8 @@ export default function App() {
                 <Route path="/manpower" element={<Manpower />} />
                 <Route path="/gallery" element={<Gallery />} />
                 <Route path="/clients" element={<Clients />} />
+                <Route path="/blog" element={<Blog />} />
+                <Route path="/blog/:slug" element={<BlogPost />} />
                 <Route path="/contact" element={<Contact />} />
                 <Route path="*" element={<NotFound />} />
               </Routes>

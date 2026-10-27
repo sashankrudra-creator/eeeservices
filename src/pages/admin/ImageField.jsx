@@ -95,12 +95,33 @@ export default function ImageField({ type, imageUrl, error, onChange, onUploaded
 
       <input
         id="ad-imageUrl"
-        type="url"
-        inputMode="url"
-        placeholder="…or paste an image address (https://…)"
+        type="text"
+        placeholder="…or paste an image address (https://… or /images/…)"
         value={imageUrl}
         onChange={(e) => onChange({ imageUrl: e.target.value, imagePath: '' })}
       />
+      <div style={{ marginTop: '8px' }}>
+        <span style={{ fontSize: '12px', fontWeight: 600, color: 'var(--ink-2)' }}>Quick AI Image Presets:</span>
+        <div style={{ display: 'flex', gap: '6px', flexWrap: 'wrap', marginTop: '4px' }}>
+          {[
+            { label: 'Plant Maintenance', url: '/images/ai/ad-maintenance.jpg' },
+            { label: 'Boiler Overhaul', url: '/images/ai/boiler-overhaul.jpg' },
+            { label: 'Solar EPC', url: '/images/ai/solar-epc.jpg' },
+            { label: '400kV Lines', url: '/images/ai/transmission-line.jpg' },
+            { label: 'C&I Automation', url: '/images/ai/ci-automation.jpg' },
+          ].map((preset) => (
+            <button
+              key={preset.url}
+              type="button"
+              className="chip chip--btn"
+              style={{ fontSize: '11.5px', padding: '3px 10px', height: 'auto', cursor: 'pointer' }}
+              onClick={() => onChange({ imageUrl: preset.url, imagePath: '' })}
+            >
+              {preset.label}
+            </button>
+          ))}
+        </div>
+      </div>
       {error && <span className="field__err">{error}</span>}
       <span className="form__hint">
         {type === 'banner'

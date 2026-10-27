@@ -1,11 +1,11 @@
 # Advertisements: one-time Firebase setup
 
-The website has popup ads, a scrolling banner strip, and an admin page at **`/admin`**
+The website has popup ads, a scrolling banner strip, and an admin page at **`/admineeeservices12`**
 where authorised staff manage them. Ads are stored in Firebase, so changes made in the
 admin page appear on the live website without redeploying.
 
 Until the steps below are done the site behaves exactly as before: no ads are shown and
-`/admin` says that Firebase has not been set up.
+`/admineeeservices12` says that Firebase has not been set up.
 
 ## 1. Create the Firebase project
 
@@ -83,7 +83,7 @@ user (must be denied).
 
 ## Using the admin page
 
-Open `https://<your-site>/admin` and sign in.
+Open `https://<your-site>/admineeeservices12` and sign in.
 
 - **Add advertisement:** choose *Popup* or *Scrolling banner*, add a title, optional description, image, link and button label.
 - **Popup options:** *Show after (seconds)* and *How often a visitor sees it* (every page load, once per visit, once a day, once a week, or only once per visitor). Only one popup is shown per page load; if several are eligible, the lowest *Display order* number wins.
@@ -99,7 +99,7 @@ Signed-in admins are signed out automatically after 30 minutes of inactivity.
 
 | Symptom | Likely cause |
 |---|---|
-| `/admin` says Firebase is not set up | The `VITE_FIREBASE_*` variables are missing at build time. Add them and redeploy. |
+| `/admineeeservices12` says Firebase is not set up | The `VITE_FIREBASE_*` variables are missing at build time. Add them and redeploy. |
 | Signed in but "not authorised" | No `admins/<UID>` document for that user (step 3). |
 | Saving fails with a "refused" message | Rules from step 4 not published yet, or the account is not in `admins`. |
 | Image upload refused | Storage rules not published, Storage not enabled, or file is not JPG/PNG/WebP/GIF. Use the image-address box as a fallback. |

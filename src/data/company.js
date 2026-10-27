@@ -34,6 +34,12 @@ export const company = {
       text: 'Electrical "A" Grade License certificate issued by Rajasthan and endorsed by AP state.',
       image: '/images/licence-electrical-a-grade.jpg',
     },
+    {
+      id: 'iso',
+      title: 'ISO Certified Management Systems',
+      text: 'ISO 9001:2015, ISO 14001:2015 & ISO 45001:2018 Certified Systems for Quality, Safety and Environmental compliance.',
+      image: '/images/generated/tree_icon.jpg',
+    },
   ],
 };
 
@@ -47,6 +53,7 @@ export const navLinks = [
   { to: '/manpower', label: 'Manpower' },
   { to: '/gallery', label: 'Gallery' },
   { to: '/clients', label: 'Clients' },
+  { to: '/blog', label: 'Blog' },
   { to: '/contact', label: 'Contact' },
 ];
 

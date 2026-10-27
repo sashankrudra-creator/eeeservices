@@ -36,6 +36,9 @@ export function safeUrl(raw) {
 
 export function safeImageUrl(raw) {
   const url = String(raw ?? '').trim();
+  if (!url) return '';
+  if (url.startsWith('data:image/')) return url;
+  if (url.startsWith('/') && !url.startsWith('//') && !url.startsWith('/\\')) return url;
   try {
     const u = new URL(url);
     return u.protocol === 'https:' || u.protocol === 'http:' ? url : '';
@@ -151,7 +154,9 @@ export function validateAd(v) {
     else if (v.linkUrl.length > LIMITS.link) e.linkUrl = 'That link is too long.';
   }
   if (v.linkText.length > LIMITS.linkText) e.linkText = `Keep the button label under ${LIMITS.linkText} characters.`;
-  if (v.imageUrl.trim() && !safeImageUrl(v.imageUrl)) e.imageUrl = 'The image address must start with https://';
+  if (v.imageUrl.trim() && !safeImageUrl(v.imageUrl)) {
+    e.imageUrl = 'Please enter a valid image address (https://..., /images/..., or upload an image).';
+  }
   if (v.startAt && v.endAt && v.endAt <= v.startAt) e.endAt = 'The end must be after the start.';
   if (!Number.isInteger(v.priority) || v.priority < 0 || v.priority > 999) e.priority = 'Use a whole number from 0 to 999.';
   if (v.type === 'popup' && (!Number.isInteger(v.delaySeconds) || v.delaySeconds < 0 || v.delaySeconds > 60)) {

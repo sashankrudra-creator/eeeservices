@@ -10,14 +10,17 @@ import AdScroller from '../components/ads/AdScroller';
 import useDocumentTitle from '../hooks/useDocumentTitle';
 
 const chips = [
+  'Power Plant & Boiler Works',
+  'Solar Plant O&M & EPC Contracts',
+  'Tower Works, Transmission Lines & Switchyard',
+  'Bed Coil Replacement & Overhaul',
+  'C&I Instruments Supply & Service',
   'Special Class IBR',
   "'A' Grade Electrical",
-  'BOE Certified Team',
+  'ISO Certified Systems',
   'Transmission Lines up to 400 kV',
-  'In-house NDT',
+  'BOE Certified Team',
   'IBR 6G Welders',
-  '1x135 MW Power Plant O&M',
-  'CEA & CIEG Liaison',
 ];
 
 export default function Home() {

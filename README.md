@@ -23,7 +23,7 @@ Locally: `npm install && npm run dev`. Production build: `npm run build`.
 - Colours and fonts: `src/styles/variables.css`.
 
 ## Advertisements
-- Public: `src/components/ads/` (popup, scrolling banners). Admin page: `src/pages/admin/` (route `/admin`). Data access: `src/services/`, `src/lib/firebase.js`.
+- Public: `src/components/ads/` (popup, scrolling banners). Admin page: `src/pages/admin/` (route `/admineeeservices12`). Data access: `src/services/`, `src/lib/firebase.js`.
 - Firebase settings come from `VITE_FIREBASE_*` environment variables (`.env.example`); security rules are in `firestore.rules` and `storage.rules`.
 - Setup, admin accounts and usage: [ADS_SETUP.md](ADS_SETUP.md).
 

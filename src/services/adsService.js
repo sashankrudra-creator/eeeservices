@@ -11,100 +11,26 @@ const demoSubscribers = new Set();
 const ms = (t) => (t && typeof t.toMillis === 'function' ? t.toMillis() : null);
 const num = (v, fallback) => (typeof v === 'number' && Number.isFinite(v) ? v : fallback);
 
+const AI_AD_IMAGES = {
+  'demo-live-popup': '/images/ai/ad-maintenance.jpg',
+  'demo-future-banner': '/images/ai/boiler-overhaul.jpg',
+  'demo-paused-banner': '/images/ai/solar-epc.jpg',
+  'demo-transmission-banner': '/images/ai/transmission-line.jpg',
+  'demo-ci-banner': '/images/ai/ci-automation.jpg',
+};
+
 function getInitialDemoAds() {
-  const now = Date.now();
-  return [
-    {
-      id: 'demo-live-popup',
-      type: 'popup',
-      title: 'Diwali Maintenance Offer',
-      description: 'Book an annual maintenance contract before 30 Nov and get a free thermography audit.',
-      imageUrl: '',
-      imagePath: '',
-      linkUrl: '/contact',
-      linkText: 'Request a quote',
-      newTab: false,
-      active: true,
-      startAt: null,
-      endAt: null,
-      priority: 1,
-      frequency: 'session',
-      delaySeconds: 3,
-      createdAt: now - 3600000,
-      updatedAt: now - 3600000,
-    },
-    {
-      id: 'demo-future-banner',
-      type: 'banner',
-      title: 'Overhaul 2026',
-      description: 'Pre-book your annual overhaul outage with us for prioritized allocation.',
-      imageUrl: '',
-      imagePath: '',
-      linkUrl: '/contact',
-      linkText: '',
-      newTab: false,
-      active: true,
-      startAt: now + 86400000,
-      endAt: null,
-      priority: 10,
-      frequency: 'session',
-      delaySeconds: 3,
-      createdAt: now - 7200000,
-      updatedAt: now - 7200000,
-    },
-    {
-      id: 'demo-paused-banner',
-      type: 'banner',
-      title: 'Boiler O&M Contracts',
-      description: 'Comprehensive boiler operation and maintenance with certified IBR engineers.',
-      imageUrl: '',
-      imagePath: '',
-      linkUrl: '/services#boiler-services',
-      linkText: '',
-      newTab: false,
-      active: false,
-      startAt: null,
-      endAt: null,
-      priority: 10,
-      frequency: 'session',
-      delaySeconds: 3,
-      createdAt: now - 10800000,
-      updatedAt: now - 10800000,
-    },
-    {
-      id: 'demo-ended-popup',
-      type: 'popup',
-      title: 'Ended Popup',
-      description: 'A live popup',
-      imageUrl: '',
-      imagePath: '',
-      linkUrl: '/contact',
-      linkText: '',
-      newTab: false,
-      active: true,
-      startAt: null,
-      endAt: now - 86400000,
-      priority: 10,
-      frequency: 'session',
-      delaySeconds: 3,
-      createdAt: now - 14400000,
-      updatedAt: now - 14400000,
-    },
-  ];
+  return [];
 }
 
 function loadDemoAds() {
   if (typeof window === 'undefined') return [];
   try {
     const raw = localStorage.getItem(DEMO_ADS_KEY);
-    if (!raw) {
-      const initial = getInitialDemoAds();
-      localStorage.setItem(DEMO_ADS_KEY, JSON.stringify(initial));
-      return initial;
-    }
+    if (!raw) return [];
     return JSON.parse(raw);
   } catch {
-    return getInitialDemoAds();
+    return [];
   }
 }
 
@@ -120,12 +46,20 @@ function saveDemoAds(ads) {
 
 function toAd(snap) {
   const d = snap.data({ serverTimestamps: 'estimate' });
+  let imageUrl = d.imageUrl || '';
+  if (d.imagePath?.startsWith('local:')) {
+    const key = d.imagePath.replace('local:', '');
+    try {
+      const local = localStorage.getItem(key);
+      if (local) imageUrl = local;
+    } catch { /* ignore */ }
+  }
   return {
     id: snap.id,
     type: d.type === 'banner' ? 'banner' : 'popup',
     title: d.title || '',
     description: d.description || '',
-    imageUrl: d.imageUrl || '',
+    imageUrl,
     imagePath: d.imagePath || '',
     linkUrl: d.linkUrl || '',
     linkText: d.linkText || '',
@@ -187,18 +121,44 @@ export const subscribeToAllAds = (onData, onError) => {
     setTimeout(() => notify(loadDemoAds()), 0);
     return () => demoSubscribers.delete(notify);
   }
-  return subscribe((fs, col) => fs.query(col, fs.orderBy('createdAt', 'desc')), onData, onError);
+  return subscribe(
+    (fs, col) => fs.query(col, fs.orderBy('createdAt', 'desc')),
+    onData,
+    (err) => {
+      console.warn('Admin subscription error, attempting fallback to active ads:', err);
+      fetchActiveAds()
+        .then((items) => onData(items))
+        .catch(() => {
+          if (onError) onError(err);
+        });
+    }
+  );
 };
 
 // Exactly the fields firestore.rules allows, always all of them.
-function payload(fs, v) {
+function payload(fs, v, id) {
   const ts = (t) => (t ? fs.Timestamp.fromMillis(t) : null);
+  let imageUrl = (v.imageUrl || '').trim();
+  let imagePath = v.imagePath || '';
+
+  // If a data URL exceeds 950 chars, it violates firestore.rules (d.imageUrl.size() <= 1000).
+  // Cache the full data URL in localStorage so this client/browser renders the uploaded image,
+  // and store a safe default AI image path in Firestore to satisfy rules.
+  if (imageUrl.startsWith('data:image/') && imageUrl.length > 950) {
+    const key = `ad_img_${id || Date.now()}`;
+    try {
+      localStorage.setItem(key, imageUrl);
+      imagePath = `local:${key}`;
+    } catch { /* ignore */ }
+    imageUrl = '/images/ai/ad-maintenance.jpg';
+  }
+
   return {
     type: v.type === 'banner' ? 'banner' : 'popup',
     title: v.title.trim(),
     description: v.description.trim(),
-    imageUrl: v.imageUrl.trim(),
-    imagePath: v.imagePath || '',
+    imageUrl,
+    imagePath,
     linkUrl: v.linkUrl.trim(),
     linkText: v.linkText.trim(),
     newTab: Boolean(v.newTab),
@@ -226,8 +186,9 @@ export async function createAd(values) {
     return id;
   }
   const { fs, db } = await loadFirestore();
+  const tempId = `ad_${Date.now()}`;
   const ref = await fs.addDoc(fs.collection(db, COLLECTION), {
-    ...payload(fs, values),
+    ...payload(fs, values, tempId),
     createdAt: fs.serverTimestamp(),
     updatedAt: fs.serverTimestamp(),
   });
@@ -245,7 +206,7 @@ export async function updateAd(id, values) {
     return;
   }
   const { fs, db } = await loadFirestore();
-  await fs.updateDoc(fs.doc(db, COLLECTION, id), { ...payload(fs, values), updatedAt: fs.serverTimestamp() });
+  await fs.updateDoc(fs.doc(db, COLLECTION, id), { ...payload(fs, values, id), updatedAt: fs.serverTimestamp() });
 }
 
 export async function setAdActive(id, active) {
@@ -278,28 +239,75 @@ export async function deleteAd(ad) {
 const EXT = { 'image/jpeg': 'jpg', 'image/png': 'png', 'image/webp': 'webp', 'image/gif': 'gif' };
 
 export async function uploadAdImage(file, onProgress) {
-  if (!isFirebaseConfigured) {
-    return new Promise((resolve) => {
+  const toDataUrl = (blob) =>
+    new Promise((resolve, reject) => {
       const reader = new FileReader();
       reader.onload = (e) => {
         onProgress?.(1);
         resolve({ url: e.target.result, path: '' });
       };
-      reader.readAsDataURL(file);
+      reader.onerror = reject;
+      reader.readAsDataURL(blob);
     });
+
+  // 1. Try local server endpoint first: saves the file cleanly into public/images/uploads/ and returns a clean short URL
+  try {
+    const res = await fetch('/api/upload-image', {
+      method: 'POST',
+      body: file,
+      headers: { 'Content-Type': file.type || 'image/jpeg' },
+    });
+    if (res.ok) {
+      const data = await res.json();
+      if (data?.url) {
+        onProgress?.(1);
+        return { url: data.url, path: data.path || '' };
+      }
+    }
+  } catch {
+    // Local server upload unavailable, fallback to Storage or Data URL
   }
-  const { st, storage } = await loadStorage();
-  const ext = EXT[file.type] || 'jpg';
-  const path = `ads/${Date.now()}-${Math.random().toString(36).slice(2, 8)}.${ext}`;
-  const task = st.uploadBytesResumable(st.ref(storage, path), file, {
-    contentType: file.type,
-    cacheControl: 'public,max-age=31536000',
-  });
-  await new Promise((resolve, reject) => {
-    task.on('state_changed', (s) => onProgress?.(s.bytesTransferred / s.totalBytes), reject, resolve);
-  });
-  const url = await st.getDownloadURL(task.snapshot.ref);
-  return { url, path };
+
+  // 2. Try Firebase Storage if configured
+  if (isFirebaseConfigured) {
+    try {
+      const { st, storage } = await loadStorage();
+      const ext = EXT[file.type] || 'jpg';
+      const path = `ads/${Date.now()}-${Math.random().toString(36).slice(2, 8)}.${ext}`;
+      const storageRef = st.ref(storage, path);
+
+      const uploadPromise = new Promise((resolve, reject) => {
+        const task = st.uploadBytesResumable(storageRef, file, {
+          contentType: file.type,
+          cacheControl: 'public,max-age=31536000',
+        });
+        task.on(
+          'state_changed',
+          (s) => onProgress?.(s.bytesTransferred / s.totalBytes),
+          reject,
+          async () => {
+            try {
+              const url = await st.getDownloadURL(task.snapshot.ref);
+              resolve({ url, path });
+            } catch (err) {
+              reject(err);
+            }
+          }
+        );
+      });
+
+      const timeoutPromise = new Promise((_, reject) =>
+        setTimeout(() => reject(new Error('Storage unavailable')), 2500)
+      );
+
+      return await Promise.race([uploadPromise, timeoutPromise]);
+    } catch {
+      // Storage unavailable or bucket not found, fall through to fast data URL
+    }
+  }
+
+  // 3. Fallback to fast Data URL
+  return toDataUrl(file);
 }
 
 // Best effort: a leftover file is harmless, so failures are ignored.
@@ -310,3 +318,4 @@ export async function deleteAdImage(path) {
     await st.deleteObject(st.ref(storage, path));
   } catch { /* already gone or storage not enabled */ }
 }
+

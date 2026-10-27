@@ -44,6 +44,11 @@ service cloud.firestore {
       allow delete: if isAdmin();
     }
 
+    match /blogs/{blogId} {
+      allow read: if resource.data.published == true || isAdmin();
+      allow create, update, delete: if isAdmin();
+    }
+
     // A signed-in user may check only their own admin record. Nobody can write it from the site.
     match /admins/{uid} {
       allow read: if request.auth != null && request.auth.uid == uid;

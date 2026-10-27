@@ -5,28 +5,28 @@ import Reveal from '../ui/Reveal';
 
 const whoCards = [
   {
-    tag: 'Our business',
-    title: 'Solar Plants & Power Plants',
-    client: '1x135 MW power plant O&M · Since 2018',
-    desc: 'EPC and O&M for solar plants and power plants, from erection and commissioning to long-term operations.',
-    image: '/images/generated/power_plant_turbine.jpg',
-    link: '/services#power-plant-om',
+    tag: 'Core Focus',
+    title: 'Power Plant & Boiler Works',
+    client: '1x135 MW Power Plant O&M · Bed Coils · Overhauls',
+    desc: 'Comprehensive O&M, AFBC bed coil replacements, boiler revamp and long-term utility plant stewardship.',
+    image: '/images/bed-coil-boiler.jpg',
+    link: '/services#power-plant-boiler-works',
+  },
+  {
+    tag: 'Clean Energy',
+    title: 'Solar Plant O&M & EPC Contracts',
+    client: 'Turnkey Ground-mount & Industrial Rooftop',
+    desc: 'Turnkey EPC execution and long-term O&M for utility and industrial solar power plants with generation guarantees.',
+    image: '/images/board-solar.jpg',
+    link: '/services#solar-plant-epc',
   },
   {
     tag: "Electrical 'A' Grade",
-    title: 'Substations & Transmission Lines',
-    client: 'Up to 400 kV · 220 kV substation works',
-    desc: 'Operation and maintenance of substations, switchyards and transmission lines up to 400 kV, plus erection and commissioning.',
-    image: '/images/generated/substation_400kv.jpg',
-    link: '/services#substation-transmission-om',
-  },
-  {
-    tag: 'Special Class IBR',
-    title: 'Boiler O&M',
-    client: 'CFBC · AFBC · PF boilers · In-house NDT',
-    desc: 'Operation and maintenance of CFBC / AFBC / PF boilers, auxiliaries, pressure parts and shutdown activities.',
-    image: '/images/generated/boiler_pipeline.jpg',
-    link: '/services#pipeline-fabrication',
+    title: 'Tower Works, Transmission Lines & Switchyard',
+    client: 'Up to 400 kV · Double Circuit Quad Lines',
+    desc: 'Erection, stringing, testing and O&M of transmission towers, switchyards and transmission lines up to 400 kV.',
+    image: '/images/switchyard-towers.jpg',
+    link: '/services#tower-transmission-switchyard',
   },
 ];
 

@@ -6,12 +6,12 @@ import { services } from '../../data/services';
 
 // Text comes straight from src/data/services.js; tags/labels only restate facts from the same file.
 const meta = {
-  'power-plant-om': { tag: 'Thermal · Solar · DG · Windmill', client: 'Comprehensive or package basis', image: '/images/generated/power_plant_turbine.jpg' },
-  'substation-transmission-om': { tag: 'Up to 400 kV', client: 'Substations · Switchyards · Lines', image: '/images/generated/substation_400kv.jpg' },
-  'pipeline-fabrication': { tag: 'Oil · Steam · Water', client: 'IBR-certified 6G welders · In-house NDT', image: '/images/generated/boiler_pipeline.jpg' },
-  'erection-commissioning': { tag: 'Testing · CEA & CIEG', client: 'Power plants & electrical systems', image: '/images/generated/transformer_erection.jpg' },
-  'turnkey-projects': { tag: 'Solar plants · Substations', client: 'Single point of responsibility', image: '/images/generated/renewable_hybrid_plant.jpg' },
-  'manpower-troubleshooting': { tag: 'BOE-certified team', client: 'Engineers · Supervisors · Technicians', image: '/images/generated/control_room_scada.jpg' },
+  'power-plant-boiler-works': { tag: 'Boiler & Plant O&M', client: 'Bed Coils · Overhaul · BTG', image: '/images/bed-coil-boiler.jpg' },
+  'solar-plant-epc': { tag: 'Solar EPC & O&M', client: 'Ground & Rooftop Utility Plants', image: '/images/generated/renewable_hybrid_plant.jpg' },
+  'tower-transmission-switchyard': { tag: 'Towers & Switchyards', client: 'Up to 400 kV · Quad Lines', image: '/images/switchyard-towers.jpg' },
+  'instruments-supply-service': { tag: 'C&I Automation', client: 'Instruments · Valves · SCADA', image: '/images/control-room.jpg' },
+  'pipeline-fabrication': { tag: 'High-Pressure Piping', client: 'IBR 6G Welders · In-house NDT', image: '/images/generated/boiler_pipeline.jpg' },
+  'erection-commissioning': { tag: 'Erection & Commissioning', client: 'Power Plants · CEA & CIEG', image: '/images/generated/transformer_erection.jpg' },
 };
 const showcaseServices = services
   .filter((s) => meta[s.slug])
@@ -23,8 +23,8 @@ export default function ServicesShowcase() {
       <div className="container">
         <SectionHeading
           tag="What we do"
-          title="Eight services. One accountable partner."
-          text="From daily plant operations to turnkey electrical projects, our integrated teams cover the full life of your power and utility assets."
+          title="Core engineering services. One accountable partner."
+          text="From boiler overhaul and bed coil replacement to solar EPC, 400 kV transmission and instrumentation, our teams run plants across India."
           className="sh--editorial"
         />
 

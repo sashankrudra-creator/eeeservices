@@ -28,15 +28,15 @@ export default function Services() {
   const servicesCards = [
     {
       type: 'wide',
-      thumb: '/images/service-1.jpg',
-      title: 'ONE ACCOUNTABLE PARTNER',
-      desc: 'From daily plant operations to turnkey electrical projects.',
+      thumb: '/images/bed-coil-boiler.jpg',
+      title: 'POWER PLANT & BOILER EXCELLENCE',
+      desc: 'Complete power plant stewardship, AFBC bed coil replacements, solar EPC, 400 kV lines and C&I instrumentation.',
       linkText: 'EXPLORE CAPABILITIES',
       linkHref: '#services-content',
     },
     {
       type: 'stat',
-      value: '8',
+      value: `${services.length}`,
       label: 'CORE SERVICES',
       badgeIcon: true,
     },
@@ -54,7 +54,7 @@ export default function Services() {
         image="/images/generated/hero_services.jpg"
         eyebrow="SERVICES"
         title="EVERYTHING YOUR PLANT NEEDS, FROM ONE TEAM"
-        text="Eight integrated services covering operations, electrical, mechanical and statutory needs."
+        text="Comprehensive engineering services covering power plants, boilers, solar EPC, 400 kV transmission, C&I instruments and statutory liaison."
         ctaText="Request a Quote"
         onCtaClick={() => openQuote('General Services')}
         cards={servicesCards}

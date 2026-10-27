@@ -53,6 +53,28 @@ export function BannerCard({ ad, preview = false, duplicate = false, solo = fals
     <>
       {img && <img className="adban__img" src={img} alt="" draggable={false} loading="lazy" />}
       <span className="adban__shade" aria-hidden="true" />
+      {ad.isBlog && (
+        <span
+          style={{
+            position: 'absolute',
+            top: '12px',
+            left: '14px',
+            background: 'rgba(8, 29, 17, 0.88)',
+            border: '1px solid rgba(52, 211, 153, 0.5)',
+            color: '#34d399',
+            fontSize: '10.5px',
+            fontWeight: 700,
+            textTransform: 'uppercase',
+            letterSpacing: '0.08em',
+            padding: '3px 9px',
+            borderRadius: '999px',
+            backdropFilter: 'blur(6px)',
+            zIndex: 2,
+          }}
+        >
+          Engineering Article
+        </span>
+      )}
       <span className="adban__text">
         <strong>{ad.title}</strong>
         {ad.description && <small>{ad.description}</small>}
