@@ -29,8 +29,8 @@ export default function About() {
     {
       type: 'feature',
       iconImg: '/images/generated/tree_icon.jpg',
-      title: 'SPECIAL CLASS IBR',
-      desc: 'Special Class IBR and Electrical \'A\' Grade licences, issued by Rajasthan and endorsed by AP state.',
+      title: 'LICENSED & ISO CERTIFIED',
+      desc: 'Special Class IBR, Electrical \'A\' Grade licences and ISO 9001, 14001 & 45001 certified management systems.',
     },
   ];
 

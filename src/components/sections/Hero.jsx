@@ -109,7 +109,7 @@ export default function Hero() {
               <BadgeCheck size={18} aria-hidden="true" /> Licensed &amp; certified
             </h3>
             <p className="hero-ref-card__desc">
-              Special Class IBR and Electrical &lsquo;A&rsquo; Grade licences, issued by Rajasthan and endorsed by AP state.
+              Special Class IBR, Electrical &lsquo;A&rsquo; Grade licences, and ISO 9001, 14001 &amp; 45001 certified systems.
             </p>
           </motion.div>
         </div>

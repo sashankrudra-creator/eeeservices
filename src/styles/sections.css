@@ -112,14 +112,20 @@
 
 /* ---------- Licences / docs ---------- */
 .licence { display: flex; flex-direction: column; }
+.licence__badges { display: flex; flex-wrap: wrap; gap: 6px; margin-top: auto; padding-top: 14px; }
+.licence__badge { display: inline-flex; align-items: center; font-family: var(--font-head); font-size: 11px; font-weight: 700; padding: 3px 10px; border-radius: 999px; background: rgba(168, 181, 162, 0.22); color: var(--olive-deep, #1a2217); }
+
 .docs { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; }
 @media (min-width: 900px) { .docs { grid-template-columns: repeat(4, 1fr); } }
-.doc { background: #fff; border: 1px solid var(--line); border-radius: 16px; overflow: hidden; text-align: left; display: flex; flex-direction: column; box-shadow: var(--shadow-sm); transition: transform 0.35s var(--ease), box-shadow 0.35s var(--ease), border-color 0.35s; color: var(--ink); }
+.doc { background: #fff; border: 1px solid var(--line); border-radius: 16px; overflow: hidden; text-align: left; display: flex; flex-direction: column; box-shadow: var(--shadow-sm); transition: transform 0.35s var(--ease), box-shadow 0.35s var(--ease), border-color 0.35s; color: var(--ink); width: 100%; cursor: pointer; }
 .doc:hover { transform: translateY(-5px); box-shadow: var(--shadow); border-color: var(--sage); }
 .doc img, .doc .img-fallback { height: 210px; width: 100%; object-fit: cover; object-position: top; background: var(--mist); transition: transform 0.6s var(--ease); }
 .doc:hover img { transform: scale(1.04); }
-.doc span { display: flex; gap: 8px; align-items: center; padding: 13px 15px; font-size: 13px; font-weight: 600; border-top: 3px solid var(--sage); position: relative; background: #fff; }
-.doc span svg { color: var(--olive); flex: none; }
+.doc .doc__body { display: flex; gap: 10px; align-items: flex-start; padding: 13px 15px; font-size: 13px; font-weight: 600; border-top: 3px solid var(--sage); position: relative; background: #fff; flex: 1; }
+.doc .doc__body svg { color: var(--olive); flex: none; margin-top: 2px; }
+.doc__meta { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+.doc__caption { font-size: 13px; font-weight: 600; line-height: 1.35; color: var(--ink); text-align: left; }
+.doc__category { font-size: 10.5px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; color: var(--olive-d, #495e35); }
 
 /* ---------- Stepper (on dark) ---------- */
 .stepper__rail { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin-bottom: 18px; }

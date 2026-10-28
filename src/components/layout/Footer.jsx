@@ -34,6 +34,10 @@ export default function Footer() {
                 <ShieldCheck size={14} />
                 <span>Electrical ‘A’ Grade</span>
               </span>
+              <span className="footer-pill-badge">
+                <ShieldCheck size={14} />
+                <span>ISO 9001 · 14001 · 45001</span>
+              </span>
             </div>
           </div>
 

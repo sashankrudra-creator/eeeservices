@@ -25,23 +25,71 @@ export const company = {
     {
       id: 'ibr',
       title: 'Special Class IBR Licence',
-      text: 'Special Class IBR License/Certificate issued by Rajasthan and endorsed by AP state.',
+      text: 'Special Class IBR License/Certificate issued by Rajasthan and endorsed by AP state for boiler operations and high-pressure steam works.',
       image: '/images/licence-ibr-rajasthan.jpg',
+      badges: ['Special Class', 'AP Endorsed'],
     },
     {
       id: 'electrical',
       title: 'Electrical "A" Grade Licence',
-      text: 'Electrical "A" Grade License certificate issued by Rajasthan and endorsed by AP state.',
+      text: 'Electrical "A" Grade License certificate issued by Rajasthan and endorsed by AP state (All Voltages, EHT / HT / LT installations).',
       image: '/images/licence-electrical-a-grade.jpg',
+      badges: ["'A' Grade", 'All Voltages', 'AP Endorsed'],
     },
     {
       id: 'iso',
-      title: 'ISO Certified Management Systems',
-      text: 'ISO 9001:2015, ISO 14001:2015 & ISO 45001:2018 Certified Systems for Quality, Safety and Environmental compliance.',
-      image: '/images/generated/tree_icon.jpg',
+      title: 'ISO Integrated Management Systems',
+      text: 'ISO 9001:2015 (QMS), ISO 14001:2015 (EMS) & ISO 45001:2018 (OHSMS) Certified Systems for Quality, Environmental, and Occupational Safety compliance.',
+      image: '/images/iso-9001-2015.jpg',
+      badges: ['ISO 9001:2015', 'ISO 14001:2015', 'ISO 45001:2018'],
     },
   ],
 };
+
+export const certificates = [
+  {
+    id: 'lic-ibr',
+    src: '/images/licence-ibr-rajasthan.jpg',
+    caption: 'Special Class IBR Licence (Rajasthan)',
+    category: 'Statutory Licences',
+  },
+  {
+    id: 'lic-electrical',
+    src: '/images/licence-electrical-a-grade.jpg',
+    caption: 'Electrical "A" Grade Licence (Rajasthan)',
+    category: 'Statutory Licences',
+  },
+  {
+    id: 'lic-ap-ibr',
+    src: '/images/licence-ap-endorsement-1.jpg',
+    caption: 'AP Endorsement — IBR Recognition',
+    category: 'Statutory Licences',
+  },
+  {
+    id: 'lic-ap-electrical',
+    src: '/images/licence-ap-endorsement-2.jpg',
+    caption: 'AP Endorsement — Electrical Licence',
+    category: 'Statutory Licences',
+  },
+  {
+    id: 'iso-9001',
+    src: '/images/iso-9001-2015.jpg',
+    caption: 'ISO 9001:2015 — Quality Management System (QMS)',
+    category: 'ISO Certifications',
+  },
+  {
+    id: 'iso-14001',
+    src: '/images/iso-14001-2015.jpg',
+    caption: 'ISO 14001:2015 — Environmental Management System (EMS)',
+    category: 'ISO Certifications',
+  },
+  {
+    id: 'iso-45001',
+    src: '/images/iso-45001-2018.jpg',
+    caption: 'ISO 45001:2018 — Occupational Health & Safety (OHSMS)',
+    category: 'ISO Certifications',
+  },
+];
 
 export const navLinks = [
   { to: '/', label: 'Home' },
@@ -104,8 +152,8 @@ export const faqs = [
     a: 'We have manpower and active sites across Andhra Pradesh, Telangana, Jharkhand, Rajasthan, Tamil Nadu and Chhattisgarh, with workshops across the country.',
   },
   {
-    q: 'What licences do you hold?',
-    a: 'We hold a Special Class IBR licence and an Electrical "A" Grade licence, both issued by Rajasthan and endorsed by AP state.',
+    q: 'What licences and certifications do you hold?',
+    a: 'We hold a Special Class IBR licence and an Electrical "A" Grade licence (both issued by Rajasthan and endorsed by AP state), alongside ISO 9001:2015 (QMS), ISO 14001:2015 (EMS), and ISO 45001:2018 (OHSMS) certified management systems.',
   },
   {
     q: 'Can you mobilise large teams quickly?',

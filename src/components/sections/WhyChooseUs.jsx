@@ -9,9 +9,9 @@ import { maintenanceSteps, safetyChips } from '../../data/capabilities';
 const strengths = [
   {
     tag: 'Licensed & certified',
-    title: "Special Class IBR & 'A' Grade Electrical",
-    client: 'Issued by Rajasthan · Endorsed by AP',
-    desc: 'Special Class IBR licence and Electrical "A" Grade licence (all voltages), both issued by Rajasthan and endorsed by AP state.',
+    title: "IBR, Electrical 'A' Grade & ISO Certified",
+    client: 'Statutory Licences · ISO 9001, 14001 & 45001',
+    desc: 'Special Class IBR licence, Electrical "A" Grade licence (all voltages) endorsed by AP state, and ISO certified quality, environmental & safety management systems.',
     image: '/images/generated/hero_industrial_plant.jpg',
   },
   {
