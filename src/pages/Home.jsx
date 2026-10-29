@@ -11,8 +11,10 @@ import useDocumentTitle from '../hooks/useDocumentTitle';
 
 const chips = [
   'Power Plant & Boiler Works',
+  'Solar Erection & Commissioning',
   'Solar Plant O&M & EPC Contracts',
   'Tower Works, Transmission Lines & Switchyard',
+  'Drone Thermography Audits',
   'Bed Coil Replacement & Overhaul',
   'C&I Instruments Supply & Service',
   'Special Class IBR',

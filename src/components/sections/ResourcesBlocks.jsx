@@ -2,7 +2,7 @@ import { Check } from 'lucide-react';
 import Icon from '../ui/Icon';
 import Reveal from '../ui/Reveal';
 import SectionHeading from '../ui/SectionHeading';
-import { resourceBlocks, equipment, ndt, rampUp } from '../../data/resources';
+import { resourceBlocks, equipment, ndt, rampUp, droneThermography } from '../../data/resources';
 
 export default function ResourcesBlocks() {
   return (
@@ -29,7 +29,7 @@ export default function ResourcesBlocks() {
 
       <section className="section section--mist">
         <div className="container">
-          <SectionHeading number="02" eyebrow="Equipment" title="Tools and tackles" />
+          <SectionHeading number="02" eyebrow="Equipment & Diagnostics" title="Tools, tackles and advanced testing" />
           <ul className="chips chips--lg">
             {equipment.map((e) => (<li key={e} className="chip">{e}</li>))}
           </ul>
@@ -42,6 +42,33 @@ export default function ResourcesBlocks() {
               </Reveal>
             ))}
           </div>
+
+          <Reveal delay={0.2}>
+            <div className="drone-showcase">
+              <div className="drone-showcase__content">
+                <span className="eyebrow eyebrow--glow" style={{ color: 'var(--olive-d, #495e35)', background: 'var(--sage-soft, rgba(168, 181, 162, 0.2))', padding: '4px 10px', borderRadius: '999px', display: 'inline-block', marginBottom: '8px' }}>
+                  {droneThermography.badge}
+                </span>
+                <h3>{droneThermography.title}</h3>
+                <p>{droneThermography.description}</p>
+                <ul className="checklist">
+                  {droneThermography.items.map((it) => (
+                    <li key={it}><Check size={16} aria-hidden="true" /> {it}</li>
+                  ))}
+                </ul>
+              </div>
+              <div className="drone-showcase__visuals">
+                <div className="drone-showcase__img-card">
+                  <img src={droneThermography.droneImage} alt="Aerial thermography using latest drone technology" />
+                  <span className="drone-showcase__caption">Aerial Drone Tower Inspection</span>
+                </div>
+                <div className="drone-showcase__img-card">
+                  <img src={droneThermography.thermalImage} alt="Radiometric infrared thermal scan on transmission grid" />
+                  <span className="drone-showcase__caption">Radiometric Thermography Scan</span>
+                </div>
+              </div>
+            </div>
+          </Reveal>
         </div>
       </section>
 

@@ -12,22 +12,22 @@ export default function Projects() {
     {
       type: 'wide',
       thumb: '/images/board-solar.jpg',
-      title: 'POWER, LINES & SUBSTATIONS',
-      desc: '1x135 MW power plant O&M, 400 kV transmission line O&M and 220 kV substation works.',
-      linkText: 'EXPLORE CASE STUDIES',
+      title: 'SOLAR ERECTION & COMMISSIONING',
+      desc: 'Ground-mount & rooftop solar EPC, 33 kV evacuation bays, MMS installation & complete commissioning.',
+      linkText: 'EXPLORE SOLAR PROJECTS',
       linkHref: '#projects-explorer',
     },
     {
       type: 'stat',
-      value: '24+',
-      label: 'ACTIVE / RECENT O&M CONTRACTS',
+      value: '30+',
+      label: 'ACTIVE & RECENT CONTRACTS',
       badgeIcon: true,
     },
     {
       type: 'feature',
       iconImg: '/images/generated/tree_icon.jpg',
-      title: 'SINCE 2010',
-      desc: 'E&I project works at Sarda Metals & Alloys, ongoing since 2010.',
+      title: 'SOLAR & POWER EPC',
+      desc: 'Turnkey solar erection, 400 kV transmission lines, 220 kV substations and power plant projects.',
     },
   ];
 
@@ -37,7 +37,7 @@ export default function Projects() {
         image="/images/generated/hero_projects.jpg"
         eyebrow="PROJECTS"
         title="RECENT CONTRACTS AND PROJECT EXPERIENCE"
-        text="Power (cogen and solar), boilers and utility plants, plus electrical projects across India."
+        text="Solar erection & commissioning, utility power plants, boilers, and high-voltage electrical projects across India."
         ctaText="Discuss Your Project"
         onCtaClick={() => openQuote('Project Consultation')}
         cards={projectCards}

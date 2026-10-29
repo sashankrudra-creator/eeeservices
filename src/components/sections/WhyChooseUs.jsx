@@ -29,11 +29,11 @@ const strengths = [
     image: '/images/generated/control_room_scada.jpg',
   },
   {
-    tag: 'Quality',
-    title: 'In-house Qualified NDT',
-    client: 'UT · MPI · DP · Hardness · Radiography',
-    desc: 'Ultrasonic, magnetic particle, dye penetrant, hardness and radiography testing by our own qualified team.',
-    image: '/images/generated/boiler_pipeline.jpg',
+    tag: 'Quality & Diagnostics',
+    title: 'In-house Qualified NDT & Drone Thermography',
+    client: 'UT · MPI · DP · Radiography · Drone Thermography',
+    desc: 'Ultrasonic, MPI, dye penetrant, radiography and aerial drone thermography audits for zero-outage hot line inspections.',
+    image: '/images/drone-thermography.jpg',
   },
   {
     tag: 'Statutory liaison',

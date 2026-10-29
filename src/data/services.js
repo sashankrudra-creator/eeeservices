@@ -17,13 +17,14 @@ export const services = [
   {
     slug: 'solar-plant-epc',
     icon: 'Sun',
-    title: 'Solar Plant O&M & EPC Contracts',
-    short: 'Complete EPC execution, turnkey installation, and continuous O&M for utility-scale ground-mounted and industrial rooftop solar plants.',
+    title: 'Solar Plant Erection, Commissioning & O&M',
+    short: 'Complete EPC execution, solar erection and commissioning, and continuous O&M for utility-scale ground-mounted and industrial rooftop solar plants.',
     covers: [
       'Turnkey solar plant EPC: ground-mounted and industrial rooftop',
+      'MMS structure erection, PV module stringing & DC cabling',
+      'Inverter duty transformers, 33 kV evacuation switchyards & commissioning',
+      'Thermography audits using latest drone technology for solar module hotspot detection',
       'Comprehensive solar plant operation and preventive maintenance',
-      'Inverters, SCADA monitoring, switchyards and string combiners',
-      'Module cleaning systems, vegetation control and IV-curve tracing',
       'Performance ratio (PR) monitoring and generation guarantee stewardship',
     ],
     image: '/images/board-solar.jpg',
@@ -35,6 +36,7 @@ export const services = [
     short: 'Erection, stringing, testing and O&M of transmission towers, switchyards and transmission lines up to 400 kV.',
     covers: [
       'Transmission towers erection, stringing and revamping up to 400 kV',
+      'Thermography using latest drone technology for towers, lines & insulators',
       'Double circuit quad line maintenance and emergency restoration',
       'Substations and switchyards: 33 kV, 132 kV, 220 kV & 400 kV',
       'Power transformers, circuit breakers, switchgear & protection systems',
@@ -73,8 +75,9 @@ export const services = [
     slug: 'erection-commissioning',
     icon: 'HardHat',
     title: 'Erection & Commissioning',
-    short: 'Erection, testing and commissioning of power plants and plant electrical systems.',
+    short: 'Erection, testing and commissioning of solar plants, power plants, substations and plant electrical systems.',
     covers: [
+      'Solar plant erection, testing and turnkey commissioning',
       'Power plant erection and commissioning',
       'AFBC boiler erection (mechanical, electrical, C&I)',
       'Substation and switchyard erection',

@@ -27,8 +27,8 @@ export default function Resources() {
     {
       type: 'feature',
       iconImg: '/images/generated/tree_icon.jpg',
-      title: 'IN-HOUSE NDT',
-      desc: 'Ultrasonic, MPI, dye penetrant, hardness and radiography by a qualified in-house team.',
+      title: 'NDT & THERMOGRAPHY',
+      desc: 'In-house ultrasonic, MPI, radiography and aerial drone thermography audits.',
     },
   ];
 

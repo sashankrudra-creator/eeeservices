@@ -5,3 +5,4 @@ dist
 .env.local
 .env.*.local
 eeeservices-ads-admin-changed-files/
+*.zip

@@ -43,11 +43,26 @@ export const equipment = [
 
 export const ndt = [
   { icon: 'Radio', label: 'Ultrasonic' },
-  { icon: 'Magnet', label: 'Magnetic Particle Inspection' },
+  { icon: 'Magnet', label: 'Magnetic Particle' },
   { icon: 'Droplets', label: 'Dye Penetrant' },
   { icon: 'Gauge', label: 'Hardness' },
   { icon: 'ScanLine', label: 'Radiography' },
+  { icon: 'Camera', label: 'Drone Thermography' },
 ];
+
+export const droneThermography = {
+  title: 'Thermography Using Latest Drone Technology',
+  badge: 'Advanced Diagnostic NDT',
+  description: 'Zero-outage aerial infrared thermography and high-resolution inspections powered by advanced radiometric thermal camera drones for transmission lines, switchyards, and solar power plants.',
+  items: [
+    'Radiometric thermal hotspot detection on 400 kV quad transmission lines, towers & insulators',
+    'Corona discharge, jumper clamp heating & loose joint diagnosis without line shutdown',
+    'Aerial solar PV string audits: identifying cell micro-cracks, bypass diode faults & hot spots',
+    'Real-time temperature delta logging and GPS-tagged digital thermal inspection reports',
+  ],
+  droneImage: '/images/drone-thermography.jpg',
+  thermalImage: '/images/thermal-scan-transmission.jpg',
+};
 
 export const rampUp = {
   headline: '600–700 gang resources mobilised in a single instance',

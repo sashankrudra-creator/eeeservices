@@ -11,7 +11,7 @@ export default function Manpower() {
   const manpowerCards = [
     {
       type: 'wide',
-      thumb: '/images/overhaul-crew.jpg',
+      thumb: '/images/ai/boiler-overhaul.jpg',
       title: 'SPECIALISED DEDICATED TEAM',
       desc: 'Engineers, supervisors, a BOE certified team, 6G welders, riggers and skilled technicians.',
       linkText: 'SEE CADRE BREAKDOWN',

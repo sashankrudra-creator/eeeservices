@@ -9,6 +9,7 @@ import Button from '../ui/Button';
 import Counter from '../ui/Counter';
 import { contracts, contractCategories } from '../../data/contracts';
 import { electricalProjects } from '../../data/electricalProjects';
+import { solarProjects } from '../../data/solarProjects';
 import { useApp } from '../../context/AppContext';
 
 const sorters = {
@@ -18,7 +19,7 @@ const sorters = {
 };
 
 export default function ProjectsExplorer() {
-  const [tab, setTab] = useState('om');
+  const [tab, setTab] = useState('solar');
   const [q, setQ] = useState('');
   const [cat, setCat] = useState('All');
   const [loc, setLoc] = useState('All');
@@ -27,7 +28,7 @@ export default function ProjectsExplorer() {
   const [detail, setDetail] = useState(null);
   const { openQuote } = useApp();
 
-  const data = tab === 'om' ? contracts : electricalProjects;
+  const data = tab === 'om' ? contracts : tab === 'solar' ? solarProjects : electricalProjects;
   const states = useMemo(() => [...new Set(data.map((d) => d.state))].sort(), [data]);
 
   const rows = useMemo(() => {
@@ -36,7 +37,7 @@ export default function ProjectsExplorer() {
       .filter((d) => (tab !== 'om' || cat === 'All' || d.category === cat))
       .filter((d) => loc === 'All' || d.state === loc)
       .filter((d) => status === 'All' || (status === 'Ongoing' ? d.ongoing : !d.ongoing))
-      .filter((d) => !s || `${d.work} ${d.client} ${d.location} ${d.duration}`.toLowerCase().includes(s))
+      .filter((d) => !s || `${d.work} ${d.client} ${d.location} ${d.duration} ${d.capacity || ''} ${d.scope || ''}`.toLowerCase().includes(s))
       .sort(sorters[sort]);
   }, [data, tab, q, cat, loc, status, sort]);
 
@@ -63,6 +64,7 @@ export default function ProjectsExplorer() {
           active={tab}
           onChange={switchTab}
           tabs={[
+            { id: 'solar', label: 'Solar Erection & Commissioning', icon: 'Sun', count: solarProjects.length },
             { id: 'om', label: 'O&M Services', icon: 'Settings', count: contracts.length },
             { id: 'elec', label: 'Electrical Projects', icon: 'Zap', count: electricalProjects.length },
           ]}
@@ -70,7 +72,7 @@ export default function ProjectsExplorer() {
 
         <div role="tabpanel" id={`panel-${tab}`} aria-labelledby={`tab-${tab}`}>
           <div className="filters">
-            <SearchInput value={q} onChange={setQ} placeholder="Search client, work or location" label="Search projects" />
+            <SearchInput value={q} onChange={setQ} placeholder="Search client, work, capacity or location" label="Search projects" />
             <label className="select">
               <span className="sr-only">Location</span>
               <select value={loc} onChange={(e) => setLoc(e.target.value)}>
@@ -113,7 +115,10 @@ export default function ProjectsExplorer() {
                 <tbody>
                   {rows.map((r, i) => (
                     <motion.tr key={`${tab}-${r.id}`} initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: Math.min(i, 10) * 0.025 }} onClick={() => setDetail(r)}>
-                      <td data-label="Work" className="t-work">{r.work}</td>
+                      <td data-label="Work" className="t-work">
+                        <span style={{ fontWeight: 600 }}>{r.work}</span>
+                        {r.capacity && <span style={{ display: 'block', fontSize: '12px', color: 'var(--olive-d, #495e35)', marginTop: '2px' }}>Capacity: {r.capacity}</span>}
+                      </td>
                       <td data-label="Client">{r.client}</td>
                       <td data-label="Duration"><span className={`dotted ${r.ongoing ? 'on' : ''}`}>{r.duration}</span></td>
                       <td data-label="Location">{r.location}</td>
@@ -136,14 +141,31 @@ export default function ProjectsExplorer() {
               <div><dt><Calendar size={16} aria-hidden="true" /> Duration</dt><dd>{detail.duration}</dd></div>
               <div><dt><MapPin size={16} aria-hidden="true" /> Location</dt><dd>{detail.location}</dd></div>
               <div><dt>Status</dt><dd><span className={`badge ${detail.ongoing ? 'badge--green' : ''}`}>{detail.ongoing ? 'Ongoing' : 'Completed'}</span></dd></div>
+              {detail.capacity && <div><dt>Capacity / Scale</dt><dd>{detail.capacity}</dd></div>}
               {detail.category && <div><dt>Category</dt><dd>{detail.category}</dd></div>}
+              {detail.scope && <div style={{ gridColumn: '1 / -1' }}><dt>Scope of Execution</dt><dd style={{ fontSize: '13.5px', lineHeight: 1.5 }}>{detail.scope}</dd></div>}
             </dl>
             <p className="muted">Related services</p>
             <ul className="chips">
-              <li className="chip">{tab === 'om' ? 'Operations & Maintenance' : 'Electrical EPC & E&I'}</li>
+              <li className="chip">
+                {tab === 'solar'
+                  ? 'Solar Erection & Commissioning'
+                  : tab === 'om'
+                  ? 'Operations & Maintenance'
+                  : 'Electrical EPC & E&I'}
+              </li>
               {detail.category && <li className="chip">{detail.category}</li>}
+              {detail.capacity && <li className="chip">{detail.capacity}</li>}
             </ul>
-            <Button onClick={() => { const svc = tab === 'om' ? 'Power Plant O&M' : 'Erection & Commissioning'; setDetail(null); setTimeout(() => openQuote(svc), 250); }}>
+            <Button onClick={() => {
+              const svc = tab === 'solar'
+                ? 'Solar Plant Erection, Commissioning & O&M'
+                : tab === 'om'
+                ? 'Power Plant O&M'
+                : 'Erection & Commissioning';
+              setDetail(null);
+              setTimeout(() => openQuote(svc), 250);
+            }}>
               Discuss a similar project
             </Button>
           </div>

@@ -5,13 +5,17 @@ export const galleryCategories = [
   'Operation & Maintenance',
   'Erection & Shutdown',
   'Fabrication & Pipeline Works',
+  'Drone & Thermography Inspection',
 ];
 
 export const gallery = [
+  { id: 13, src: '/images/drone-thermography.jpg', category: 'Drone & Thermography Inspection', caption: 'Thermography Using Latest Drone Technology on Transmission Towers' },
+  { id: 14, src: '/images/thermal-scan-transmission.jpg', category: 'Drone & Thermography Inspection', caption: 'Radiometric Infrared Thermography Hotspot Detection on Transmission Lines' },
   { id: 3, src: '/images/bed-coil-boiler.jpg', category: 'Major Overhaul & Revamp', caption: 'AFBC Boiler Bed Coil Replacement & Revamp Works' },
   { id: 1, src: '/images/switchyard-towers.jpg', category: 'Operation & Maintenance', caption: 'KMPCL 400 kV Quad Line & Tower Works' },
-  { id: 2, src: '/images/overhaul-crew.jpg', category: 'Major Overhaul & Revamp', caption: 'Turbine & Boiler Overhaul & Revamp Activities' },
+  { id: 2, src: '/images/ai/boiler-overhaul.jpg', category: 'Major Overhaul & Revamp', caption: 'Turbine & Boiler Overhaul & NDT Revamp Activities' },
   { id: 12, src: '/images/board-solar.jpg', category: 'Operation & Maintenance', caption: 'Solar Plant O&M & EPC Installations' },
+  { id: 15, src: '/images/ai/solar-epc.jpg', category: 'Erection & Shutdown', caption: 'Solar Erection & Commissioning for Utility & Industrial Plants' },
   { id: 9, src: '/images/control-room.jpg', category: 'Operation & Maintenance', caption: 'C&I Instruments Supply, Control Room & Panel Maintenance' },
   { id: 4, src: '/images/transformer-erection.jpg', category: 'Erection & Shutdown', caption: 'Sarda 220 kV Substation & Switchyard Works' },
   { id: 6, src: '/images/cable-trench-structure.jpg', category: 'Erection & Shutdown', caption: 'Cable Trench Erection Work at Hira Plant' },
