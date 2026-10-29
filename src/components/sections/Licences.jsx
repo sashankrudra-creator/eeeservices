@@ -23,7 +23,7 @@ export default function Licences() {
     <section className="section" id="licences">
       <div className="container">
         <SectionHeading
-          number="01"
+          number="02"
           eyebrow="Licensed & certified"
           title="Statutory licences & ISO certifications you can rely on"
           text="We hold Special Class IBR and Electrical 'A' Grade statutory licences endorsed by AP state, alongside ISO certified management systems for Quality, Environment, and Health & Safety."

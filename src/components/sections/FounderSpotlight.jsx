@@ -15,7 +15,7 @@ export default function FounderSpotlight({ full = false }) {
           <i />
         </Reveal>
         <div>
-          <SectionHeading eyebrow="Leadership" title={founder.name} text={`${founder.role} · ${founder.credentials}`} />
+          <SectionHeading number={full ? '01' : undefined} eyebrow="Leadership" title={founder.name} text={`${founder.role} · ${founder.credentials}`} />
           <Reveal delay={0.1}>
             <p className="lead">{founder.bio}</p>
             <ul className="chips">

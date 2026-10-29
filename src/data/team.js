@@ -36,6 +36,7 @@ export const domainExperts = [
     name: 'I V Satya Rao',
     role: 'BOE Certified Mechanical Engineer',
     years: '38+ years',
+    email: 'technical@eeeservices.in',
     summary: 'Troubleshooting, performance analysis and field engineering.',
     detail:
       'Over 38 years of experience spread across troubleshooting, performance analysis including Performance Guarantee Tests, Erection & Commissioning and Field Engineering Services.',
@@ -44,6 +45,7 @@ export const domainExperts = [
     name: 'K Rama Hari Shyam',
     role: 'BOE Certified Mechanical Engineer',
     years: '30+ years',
+    email: 'projects@eeeservices.in',
     summary: 'Troubleshooting, performance analysis and field engineering.',
     detail:
       'Over 30 years of experience spread across troubleshooting, performance analysis including Performance Guarantee Tests, Erection & Commissioning and Field Engineering Services.',
@@ -59,6 +61,7 @@ export const domainExperts = [
     name: 'Hareen Chakravarthy',
     role: 'NPTI Certified Engineer',
     years: '16 years',
+    email: 'operations@eeeservices.in',
     summary: 'Thermal and combined cycle power plant O&M.',
     detail: 'NPTI-certified engineer with 16 years of experience in thermal and combined cycle power plants in Operations and Maintenance services.',
   },
@@ -66,6 +69,7 @@ export const domainExperts = [
     name: 'Dev Ashok Kumar',
     role: 'Mechanical Engineer',
     years: '22 years',
+    email: 'info@eeeservices.in',
     summary: 'Thermal plants and process boilers O&M.',
     detail:
       'Mechanical Engineer with 22 years of experience in thermal power plants and process boilers in Operations and Maintenance services. Expertise in process boiler commissioning.',

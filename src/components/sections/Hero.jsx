@@ -28,7 +28,7 @@ export default function Hero() {
           {/* Brand lockup: original logo + company tagline */}
           <motion.div className="hero-brand" {...rise(0)}>
             <span className="hero-brand__plate">
-              <img src="/images/Triple E Energy Services Logo.png?v=5" alt="Triple E Services" />
+              <img src="/images/triple-e-services-logo.png?v=6" alt="Triple E Services" />
             </span>
             <span className="hero-brand__tagline" aria-label={words.join(', ')}>
               {words.map((w, i) => (
@@ -92,7 +92,7 @@ export default function Hero() {
           <motion.div className="hero-ref-card hero-ref-card--stat" {...rise(0.45)}>
             <div className="hero-ref-card__avatars" aria-hidden="true">
               <span className="ref-avatar ref-avatar--1">
-                <img src="/images/Triple E Energy Services Logo.png?v=5" alt="" />
+                <img src="/images/triple-e-services-logo.png?v=6" alt="" />
               </span>
               <span className="ref-avatar ref-avatar--2"><Users size={18} /></span>
               <span className="ref-avatar ref-avatar--3"><span>6</span></span>

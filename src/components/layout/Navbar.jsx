@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { NavLink, useLocation } from 'react-router-dom';
+import { Link, NavLink, useLocation } from 'react-router-dom';
 import { AnimatePresence, motion } from 'framer-motion';
 import { ChevronDown, Mail, Menu, Phone, X, ArrowRight } from 'lucide-react';
 import Logo from './Logo';
@@ -17,7 +17,7 @@ export default function Navbar() {
   const [mega, setMega] = useState(false);
   const [drawerServicesOpen, setDrawerServicesOpen] = useState(false);
   const { pathname } = useLocation();
-  const { openQuote } = useApp();
+  const { openQuote, openIso } = useApp();
   const scrolled = y > 40;
 
   useEffect(() => {
@@ -44,12 +44,21 @@ export default function Navbar() {
         <div className="container topbar__in">
           <div className="topbar__contact">
             <a href={`tel:${company.offices[0].phones[0]}`}><Phone size={14} aria-hidden="true" /> {company.offices[0].phones[0]} / {company.offices[0].phones[1]}</a>
-            <a href={`mailto:${company.emails[0]}`}><Mail size={14} aria-hidden="true" /> {company.emails[0]}</a>
+            <a href="mailto:info@eeeservices.in"><Mail size={14} aria-hidden="true" /> info@eeeservices.in</a>
+            <a href="mailto:eeeservices2007@gmail.com"><Mail size={14} aria-hidden="true" /> eeeservices2007@gmail.com</a>
           </div>
           <div className="topbar__badges">
-            <span>Special Class IBR</span>
-            <span>Electrical &lsquo;A&rsquo; Grade</span>
-            <span>ISO Certified</span>
+            <span className="topbar__badge">Special Class IBR</span>
+            <span className="topbar__badge">Electrical &lsquo;A&rsquo; Grade</span>
+            <button
+              type="button"
+              className="topbar__badge topbar__badge--btn"
+              onClick={openIso}
+              title="Click to view ISO Certificates"
+              aria-label="View ISO Certificates"
+            >
+              ISO Certified
+            </button>
           </div>
         </div>
       </div>
@@ -157,6 +166,16 @@ export default function Navbar() {
                 </motion.div>
               ))}
             </nav>
+            <div className="drawer__badges">
+              <button
+                type="button"
+                className="drawer__badge-btn"
+                onClick={() => { setOpen(false); openIso(); }}
+              >
+                <span>ISO Certified</span>
+                <small>Tap to View Certificates &rarr;</small>
+              </button>
+            </div>
             <div className="drawer__foot">
               <Button onClick={() => { setOpen(false); openQuote(); }}>Get a Quote</Button>
               <Button variant="ghost" href={`tel:${company.offices[0].phones[0]}`} icon={<Phone size={16} />}>Call Now</Button>

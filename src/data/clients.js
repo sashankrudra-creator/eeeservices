@@ -13,6 +13,8 @@ export const industries = [
 
 export const clients = [
   { name: "Dr. Reddy's Laboratories", industry: 'Pharma', match: "Reddy", logo: '/images/dr.reddy\'s.png' },
+  { name: 'OEG India', industry: 'Power', match: 'OEG', logo: '/images/oeg-india.png' },
+  { name: 'Kaleesuwari Refinery', industry: 'Dairy & Food', match: 'Kaleesuwari', logo: '/images/kaleesuwari.png' },
   { name: 'Novopor Advanced Sciences', industry: 'Pharma', match: 'Novopor', logo: '/images/novopor_advanced.jpg' },
   { name: 'Nagarjuna Group (Murugappa)', industry: 'Power', match: 'Nagarjuna', logo: '/images/murugappa.png' },
   { name: 'Thermax (partner)', industry: 'Power', match: 'Thermax', logo: '/images/Thermax.png' },

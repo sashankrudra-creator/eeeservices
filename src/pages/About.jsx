@@ -18,7 +18,7 @@ export default function About() {
       title: 'FOUNDED BY ENGINEERS',
       desc: 'Led by VP Chandra Sekhar, B.E. (Electrical), \'A\' Grade Electrical Licence holder for all voltages.',
       linkText: 'EXPLORE OUR STORY',
-      linkHref: '#timeline-section',
+      linkHref: '#founder-section',
     },
     {
       type: 'stat',
@@ -43,17 +43,23 @@ export default function About() {
         text="Triple E Services is primarily engaged in providing services relating to power plants and industry, led by engineers with decades of field experience."
         ctaText="Meet Our Team"
         onCtaClick={() => {
-          document.getElementById('timeline-section')?.scrollIntoView({ behavior: 'smooth' }) ||
+          document.getElementById('founder-section')?.scrollIntoView({ behavior: 'smooth' }) ||
           window.scrollTo({ top: 600, behavior: 'smooth' });
         }}
         cards={aboutCards}
       />
-      <div id="timeline-section">
+      <div id="founder-section">
+        <FounderSpotlight full />
+      </div>
+      <div id="licences-section">
         <Licences />
       </div>
-      <Timeline />
-      <FounderSpotlight full />
-      <ExpertsGrid />
+      <div id="experts-section">
+        <ExpertsGrid />
+      </div>
+      <div id="timeline-section">
+        <Timeline />
+      </div>
       <section className="section section--dark section--grid">
         <div className="container container--narrow">
           <Reveal className="commitment commitment--dark">

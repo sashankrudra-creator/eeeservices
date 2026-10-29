@@ -3,8 +3,10 @@ import { ArrowUp, Mail, MapPin, Phone, ShieldCheck, Award } from 'lucide-react';
 import Logo from './Logo';
 import { company, navLinks } from '../../data/company';
 import { services } from '../../data/services';
+import { useApp } from '../../context/AppContext';
 
 export default function Footer() {
+  const { openIso } = useApp();
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
@@ -34,10 +36,15 @@ export default function Footer() {
                 <ShieldCheck size={14} />
                 <span>Electrical ‘A’ Grade</span>
               </span>
-              <span className="footer-pill-badge">
+              <button
+                type="button"
+                className="footer-pill-badge footer-pill-badge--btn"
+                onClick={openIso}
+                title="Click to view ISO Certificates"
+              >
                 <ShieldCheck size={14} />
                 <span>ISO 9001 · 14001 · 45001</span>
-              </span>
+              </button>
             </div>
           </div>
 

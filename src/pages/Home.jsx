@@ -10,7 +10,7 @@ import AdScroller from '../components/ads/AdScroller';
 import useDocumentTitle from '../hooks/useDocumentTitle';
 
 const chips = [
-  'Power Plant & Boiler Works',
+  'Power Plants & Boiler O&M',
   'Solar Erection & Commissioning',
   'Solar Plant O&M & EPC Contracts',
   'Tower Works, Transmission Lines & Switchyard',

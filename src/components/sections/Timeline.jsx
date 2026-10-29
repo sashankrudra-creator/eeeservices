@@ -6,7 +6,7 @@ export default function Timeline() {
   return (
     <section className="section section--dark section--grid">
       <div className="container">
-        <SectionHeading light number="02" eyebrow="Our journey" title="Years of execution on live plants" />
+        <SectionHeading light number="04" eyebrow="Our journey" title="Years of execution on live plants" />
         <ol className="timeline">
           {timeline.map((t, i) => (
             <Reveal as="li" key={t.year} delay={(i % 3) * 0.06} className="timeline__item">

@@ -26,6 +26,8 @@ export const contracts = [
   { id: 22, work: 'O&M', client: 'Veda Bio Fuels', duration: 'Apr 2016 – 2019', year: 2016, ongoing: false, location: AP, state: AP, category: 'Power' },
   { id: 23, work: 'O&M', client: 'Green Tech Industries', duration: 'Apr 2018 – 2021', year: 2018, ongoing: false, location: AP, state: AP, category: 'Power' },
   { id: 24, work: 'O&M', client: 'Vizag General Cargo Berth Ltd (Vedanta)', duration: 'Apr 2018 – 2019', year: 2018, ongoing: false, location: AP, state: AP, category: 'Utility' },
+  { id: 25, work: 'Power Plant O&M & Specialized Engineering Services', client: 'OEG India Pvt Ltd', duration: '2022 – Continuing', year: 2022, ongoing: true, location: 'Pan India', state: 'Tamil Nadu', category: 'Power' },
+  { id: 26, work: 'Utility, Boiler & Plant O&M Services', client: 'Kaleesuwari Refinery Pvt Ltd', duration: '2023 – Continuing', year: 2023, ongoing: true, location: 'Tamil Nadu & AP', state: 'Tamil Nadu', category: 'Boiler' },
 ];
 
 export const contractCategories = ['Power', 'Boiler', 'Solar', 'Utility', 'Substation', 'Transmission'];

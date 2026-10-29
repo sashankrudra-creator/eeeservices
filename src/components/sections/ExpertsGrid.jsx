@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
+import { Mail } from 'lucide-react';
 import Reveal from '../ui/Reveal';
 import SectionHeading from '../ui/SectionHeading';
 import { fullTimeExperts, domainExperts } from '../../data/team';
@@ -25,7 +26,15 @@ function ExpertCard({ p, big }) {
           </motion.p>
         )}
       </AnimatePresence>
-      <button className="link-btn" onClick={() => setOpen((o) => !o)} aria-expanded={open}>{open ? 'Show less' : 'Read more'}</button>
+      <div className="expert__foot">
+        {p.email && (
+          <a href={`mailto:${p.email}`} className="expert__email" title={`Email ${p.name}`}>
+            <Mail size={13} aria-hidden="true" />
+            <span>{p.email}</span>
+          </a>
+        )}
+        <button className="link-btn" onClick={() => setOpen((o) => !o)} aria-expanded={open}>{open ? 'Show less' : 'Read more'}</button>
+      </div>
     </div>
   );
 }

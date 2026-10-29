@@ -6,7 +6,7 @@ import { services } from '../../data/services';
 
 // Text comes straight from src/data/services.js; tags/labels only restate facts from the same file.
 const meta = {
-  'power-plant-boiler-works': { tag: 'Boiler & Plant O&M', client: 'Bed Coils · Overhaul · BTG', image: '/images/bed-coil-boiler.jpg' },
+  'power-plant-boiler-works': { tag: 'Power plants and Boiler O&M', client: 'Bed Coils · Overhaul · BTG', image: '/images/bed-coil-boiler.jpg' },
   'solar-plant-epc': { tag: 'Solar EPC & O&M', client: 'Ground & Rooftop Utility Plants', image: '/images/generated/renewable_hybrid_plant.jpg' },
   'tower-transmission-switchyard': { tag: 'Towers & Switchyards', client: 'Up to 400 kV · Quad Lines', image: '/images/switchyard-towers.jpg' },
   'thermography-drone-inspection': { tag: 'Drone & Thermography', client: 'Towers · Solar · Switchyards', image: '/images/drone-thermography.jpg' },

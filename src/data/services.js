@@ -2,7 +2,7 @@ export const services = [
   {
     slug: 'power-plant-boiler-works',
     icon: 'Factory',
-    title: 'Power Plant & Boiler Works',
+    title: 'Power Plants & Boiler O&M',
     short: 'Comprehensive O&M and boiler overhaul for Thermal, Solar, DG & Windmill plants: BTG, BOP, CHP, AFBC bed coil revamps & ash handling.',
     covers: [
       'Thermal, solar, DG and windmill power plants',
