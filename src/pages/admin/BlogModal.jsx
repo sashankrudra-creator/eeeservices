@@ -1,6 +1,8 @@
-import { useState, useEffect } from 'react';
-import { X, Loader2, BookOpen, Sparkles, Image, Check } from 'lucide-react';
+import { useState, useRef } from 'react';
+import { X, Loader2, BookOpen, Upload, Trash2, CheckCircle2, Check } from 'lucide-react';
 import Button from '../../components/ui/Button';
+import { uploadAdImage } from '../../services/adsService';
+import { ACCEPTED_TYPES, prepareImage } from '../../utils/imageTools';
 
 const CATEGORIES = [
   'Boiler Engineering',
@@ -12,12 +14,15 @@ const CATEGORIES = [
 ];
 
 export default function BlogModal({ blog, onClose, onSave }) {
+  const fileRef = useRef(null);
   const [title, setTitle] = useState(blog?.title || '');
   const [category, setCategory] = useState(blog?.category || CATEGORIES[0]);
   const [customCat, setCustomCat] = useState('');
   const [author, setAuthor] = useState(blog?.author || 'Triple E Engineering Team');
   const [readTime, setReadTime] = useState(blog?.readTime || '5 min read');
   const [imageUrl, setImageUrl] = useState(blog?.imageUrl || '');
+  const [uploading, setUploading] = useState(false);
+  const [uploadNote, setUploadNote] = useState('');
   const [excerpt, setExcerpt] = useState(blog?.excerpt || '');
   const [content, setContent] = useState(blog?.content || '');
   const [published, setPublished] = useState(blog ? blog.published : true);
@@ -26,12 +31,32 @@ export default function BlogModal({ blog, onClose, onSave }) {
 
   // Sample image suggestions for fast selection
   const imagePresets = [
+    { label: 'Drone Thermography', url: '/images/drone-thermography.jpg' },
+    { label: 'Thermal Scan', url: '/images/thermal-scan-transmission.jpg' },
     { label: 'AI Boiler Bed Coils', url: '/images/ai/boiler-overhaul.jpg' },
     { label: 'AI Utility Solar EPC', url: '/images/ai/solar-epc.jpg' },
     { label: 'AI 400kV Lines', url: '/images/ai/transmission-line.jpg' },
     { label: 'AI C&I Automation', url: '/images/ai/ci-automation.jpg' },
     { label: 'AI Plant Maintenance', url: '/images/ai/ad-maintenance.jpg' },
   ];
+
+  const handleLocalFile = async (file) => {
+    if (!file || uploading) return;
+    setError('');
+    setUploading(true);
+    setUploadNote('');
+    try {
+      const prepared = await prepareImage(file);
+      const { url } = await uploadAdImage(prepared);
+      setImageUrl(url);
+      setUploadNote(`Loaded "${file.name}" from local storage`);
+    } catch (err) {
+      setError(err?.message || 'Failed to process local image.');
+    } finally {
+      setUploading(false);
+      if (fileRef.current) fileRef.current.value = '';
+    }
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -172,14 +197,54 @@ export default function BlogModal({ blog, onClose, onSave }) {
           </div>
 
           <div className="field">
-            <label htmlFor="blog-image">Cover Image URL</label>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '6px' }}>
+              <label htmlFor="blog-image" style={{ margin: 0 }}>Cover Image</label>
+              <button
+                type="button"
+                onClick={() => fileRef.current?.click()}
+                disabled={uploading}
+                style={{
+                  background: 'none',
+                  border: 'none',
+                  color: 'var(--olive, #3d502d)',
+                  fontWeight: 600,
+                  fontSize: '12px',
+                  cursor: 'pointer',
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  gap: '4px',
+                  padding: '2px 6px',
+                }}
+              >
+                <Upload size={13} aria-hidden="true" /> {uploading ? 'Processing…' : 'Upload from Local Storage'}
+              </button>
+            </div>
+
+            <input
+              ref={fileRef}
+              type="file"
+              accept={ACCEPTED_TYPES.join(',')}
+              hidden
+              onChange={(e) => handleLocalFile(e.target.files?.[0])}
+            />
+
             <input
               id="blog-image"
               type="text"
               value={imageUrl}
-              onChange={(e) => setImageUrl(e.target.value)}
-              placeholder="Paste image URL or pick a preset below"
+              onChange={(e) => {
+                setImageUrl(e.target.value);
+                setUploadNote('');
+              }}
+              placeholder="Paste image URL (/images/...) or upload from local storage above"
             />
+
+            {uploadNote && (
+              <span style={{ display: 'inline-flex', alignItems: 'center', gap: '5px', fontSize: '12px', color: 'var(--olive, #3d502d)', fontWeight: 600, marginTop: '5px' }}>
+                <CheckCircle2 size={14} /> {uploadNote}
+              </span>
+            )}
+
             <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px', marginTop: '8px' }}>
               <span style={{ fontSize: '12px', color: '#666', alignSelf: 'center', marginRight: '4px' }}>Quick Presets:</span>
               {imagePresets.map((p) => (
@@ -187,16 +252,33 @@ export default function BlogModal({ blog, onClose, onSave }) {
                   type="button"
                   key={p.label}
                   className="chip chip--btn"
-                  style={{ fontSize: '11.5px', padding: '3px 9px' }}
-                  onClick={() => setImageUrl(p.url)}
+                  style={{
+                    fontSize: '11.5px',
+                    padding: '3px 9px',
+                    background: imageUrl === p.url ? 'var(--olive, #3d502d)' : undefined,
+                    color: imageUrl === p.url ? '#fff' : undefined,
+                  }}
+                  onClick={() => {
+                    setImageUrl(p.url);
+                    setUploadNote(`Selected preset "${p.label}"`);
+                  }}
                 >
                   {p.label}
                 </button>
               ))}
             </div>
+
             {imageUrl && (
-              <div style={{ marginTop: '10px', height: '100px', borderRadius: '8px', overflow: 'hidden', border: '1px solid #ddd', maxWidth: '240px' }}>
+              <div style={{ marginTop: '10px', height: '110px', borderRadius: '8px', overflow: 'hidden', border: '1px solid #ddd', maxWidth: '260px', position: 'relative' }}>
                 <img src={imageUrl} alt="Cover preview" style={{ width: '100%', height: '100%', objectFit: 'cover' }} onError={(e) => { e.target.style.display = 'none'; }} />
+                <button
+                  type="button"
+                  onClick={() => { setImageUrl(''); setUploadNote(''); }}
+                  style={{ position: 'absolute', top: '6px', right: '6px', background: 'rgba(0,0,0,0.6)', color: '#fff', border: 'none', borderRadius: '50%', width: '24px', height: '24px', display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer' }}
+                  title="Remove image"
+                >
+                  <Trash2 size={12} />
+                </button>
               </div>
             )}
           </div>
