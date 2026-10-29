@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Triple E Services</title>
+    <script>
+      sessionStorage.redirect = location.pathname + location.search + location.hash;
+      location.replace('/' + (location.search || '') + (location.hash || ''));
+    </script>
+    <meta http-equiv="refresh" content="0;URL='/'" />
+  </head>
+  <body>
+    <p>Redirecting to Triple E Services...</p>
+  </body>
+</html>
+

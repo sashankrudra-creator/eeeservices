@@ -59,9 +59,43 @@ function imageUploadPlugin() {
   };
 }
 
+function spaFallbackPlugin() {
+  return {
+    name: 'spa-fallback-plugin',
+    closeBundle() {
+      const distDir = path.resolve(process.cwd(), 'dist');
+      const indexPath = path.join(distDir, 'index.html');
+      if (!fs.existsSync(indexPath)) return;
+
+      const htmlContent = fs.readFileSync(indexPath, 'utf-8');
+      const routes = [
+        'admineeeservices12',
+        'admin',
+        'about',
+        'services',
+        'operations-maintenance',
+        'resources',
+        'projects',
+        'manpower',
+        'gallery',
+        'clients',
+        'blog',
+        'contact',
+      ];
+
+      routes.forEach((route) => {
+        const routeDir = path.join(distDir, route);
+        if (!fs.existsSync(routeDir)) {
+          fs.mkdirSync(routeDir, { recursive: true });
+        }
+        fs.writeFileSync(path.join(routeDir, 'index.html'), htmlContent);
+      });
+    },
+  };
+}
+
 export default defineConfig({
-  plugins: [react(), imageUploadPlugin()],
+  plugins: [react(), imageUploadPlugin(), spaFallbackPlugin()],
   server: { host: '0.0.0.0', port: 5173, allowedHosts: true },
   preview: { host: '0.0.0.0', port: 5173, allowedHosts: true },
 });
-
