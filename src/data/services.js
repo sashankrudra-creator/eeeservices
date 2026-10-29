@@ -45,6 +45,36 @@ export const services = [
     image: '/images/switchyard-towers.jpg',
   },
   {
+    slug: 'thermography-drone-inspection',
+    icon: 'ScanLine',
+    title: 'Thermography & Drone Inspection',
+    short: 'Precision thermography audits using latest drone technology and high-resolution radiometric thermal cameras for transmission lines, towers, solar PV plants, switchyards, and boilers.',
+    covers: [
+      'Thermography using latest drone technology for high-voltage transmission towers, lines & insulators',
+      'High-resolution infrared thermal imaging & hotspot diagnostic analysis',
+      'Solar PV module aerial drone thermography for hotspot detection & string failure diagnostics',
+      'Switchyards, substations, transformers, busbars & circuit breaker thermal audits up to 400 kV',
+      'Boiler refractory lining, heat exchanger & steam pipe thermal loss audits',
+      'Comprehensive thermal diagnostic reports with temperature profiling and preventive remediation plans',
+    ],
+    image: '/images/drone-thermography.jpg',
+    secondaryImage: '/images/thermal-scan-transmission.jpg',
+    gallery: [
+      {
+        src: '/images/drone-thermography.jpg',
+        badge: 'Drone Technology',
+        title: 'Aerial Drone Inspection',
+        caption: 'Thermography using latest drone technology for high-voltage transmission lines, towers & insulators.',
+      },
+      {
+        src: '/images/thermal-scan-transmission.jpg',
+        badge: 'Infrared Thermal Scan',
+        title: 'Radiometric Hotspot Diagnostics',
+        caption: 'High-resolution thermal scan identifying hotspot temperature rises, loose joints & faulty insulators.',
+      },
+    ],
+  },
+  {
     slug: 'instruments-supply-service',
     icon: 'Gauge',
     title: 'Instruments Supply & Service',

@@ -79,7 +79,7 @@ export default function Services() {
                   <div className="svc__head">
                     <span className="card__icon"><Icon name={s.icon} size={28} /></span>
                     <div>
-                      <span className="svc__num">0{i + 1}</span>
+                      <span className="svc__num">{String(i + 1).padStart(2, '0')}</span>
                       <h2>{s.title}</h2>
                     </div>
                   </div>
@@ -90,8 +90,29 @@ export default function Services() {
                   </ul>
                   <Button onClick={() => openQuote(s.title)}>Request this service</Button>
                 </div>
-                <div className="svc__image">
-                  <img src={s.image} alt={s.title} loading="lazy" />
+                <div className="svc__media-col">
+                  {s.gallery && s.gallery.length > 0 ? (
+                    <div className="svc__gallery-grid">
+                      {s.gallery.map((img, idx) => (
+                        <div key={idx} className="svc__gallery-card">
+                          <div className="svc__image">
+                            <img src={img.src} alt={img.title || s.title} loading="lazy" />
+                            {img.badge && <span className="svc__image-badge">{img.badge}</span>}
+                          </div>
+                          {img.caption && (
+                            <div className="svc__gallery-caption">
+                              {img.title && <span className="svc__gallery-label">{img.title}</span>}
+                              <p>{img.caption}</p>
+                            </div>
+                          )}
+                        </div>
+                      ))}
+                    </div>
+                  ) : (
+                    <div className="svc__image">
+                      <img src={s.image} alt={s.title} loading="lazy" />
+                    </div>
+                  )}
                 </div>
               </Reveal>
             ))}

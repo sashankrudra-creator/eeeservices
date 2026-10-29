@@ -11,7 +11,7 @@ export default function ServicesGrid() {
   return (
     <section className="section" id="services-grid">
       <div className="container">
-        <SectionHeading number="01" eyebrow="What we do" title="Eight services. One accountable partner." text="From daily plant operations to turnkey electrical projects, our integrated teams cover the full life of your power and utility assets." />
+        <SectionHeading number="01" eyebrow="What we do" title="Core engineering services. One accountable partner." text="From daily plant operations and drone thermography audits to turnkey electrical and solar projects, our integrated teams cover the full life of your assets." />
         <Reveal>
           <CardSlider perView={4} label="Services">
             {services.map((s) => (
